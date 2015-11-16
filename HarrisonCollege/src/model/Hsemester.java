@@ -13,7 +13,7 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="HSEMESTER", schema="testuserdb")
+@Table(name="Hsemester", schema="testuserdb")
 @NamedQuery(name="Hsemester.findAll", query="SELECT h FROM Hsemester h")
 public class Hsemester implements Serializable {
 	private static final long serialVersionUID = 1L;

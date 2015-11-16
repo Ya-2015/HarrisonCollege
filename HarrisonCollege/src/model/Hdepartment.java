@@ -13,19 +13,19 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="HDEPARTMENT", schema="testuserdb")
+@Table(name="Hdepartment", schema="testuserdb")
 @NamedQuery(name="Hdepartment.findAll", query="SELECT h FROM Hdepartment h")
 public class Hdepartment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="HDEPARTMENT_DEPARTCODE_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HDEPARTMENT_DEPARTCODE_GENERATOR")
-	private long departcode;
+	@SequenceGenerator(schema="testuserdb", name="HDEPARTMENT_CODE_GENERATOR", sequenceName="HDEPARTMENT_SEQ",allocationSize=1 )
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HDEPARTMENT_CODE_GENERATOR")
+	private long code;
 
-	private String departmentname;
+	private String departname;
 
-	private BigDecimal statuscode;
+	private int statuscode;
 
 	//bi-directional many-to-one association to Hcourse
 	@OneToMany(mappedBy="hdepartment")
@@ -42,27 +42,27 @@ public class Hdepartment implements Serializable {
 	public Hdepartment() {
 	}
 
-	public long getDepartcode() {
-		return this.departcode;
+	public long getCode() {
+		return this.code;
 	}
 
-	public void setDepartcode(long departcode) {
-		this.departcode = departcode;
+	public void setCode(long code) {
+		this.code = code;
 	}
 
-	public String getDepartmentname() {
-		return this.departmentname;
+	public String getDepartname() {
+		return this.departname;
 	}
 
-	public void setDepartmentname(String departmentname) {
-		this.departmentname = departmentname;
+	public void setDepartname(String departname) {
+		this.departname = departname;
 	}
 
-	public BigDecimal getStatuscode() {
+	public int getStatuscode() {
 		return this.statuscode;
 	}
 
-	public void setStatuscode(BigDecimal statuscode) {
+	public void setStatuscode(int statuscode) {
 		this.statuscode = statuscode;
 	}
 

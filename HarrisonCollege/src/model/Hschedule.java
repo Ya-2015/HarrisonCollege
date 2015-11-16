@@ -13,7 +13,7 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="HSCHEDULE", schema="testuserdb")
+@Table(name="Hschedule", schema="testuserdb")
 @NamedQuery(name="Hschedule.findAll", query="SELECT h FROM Hschedule h")
 public class Hschedule implements Serializable {
 	private static final long serialVersionUID = 1L;

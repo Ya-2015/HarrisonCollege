@@ -13,7 +13,7 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="HMAJOR", schema="testuserdb")
+@Table(name="Hmajor", schema="testuserdb")
 @NamedQuery(name="Hmajor.findAll", query="SELECT h FROM Hmajor h")
 public class Hmajor implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -1,9 +1,7 @@
 package model;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -13,7 +11,7 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="HCLASSROOM", schema="testuserdb")
+@Table(name="Hclassroom", schema="testuserdb")
 @NamedQuery(name="Hclassroom.findAll", query="SELECT h FROM Hclassroom h")
 public class Hclassroom implements Serializable {
 	private static final long serialVersionUID = 1L;

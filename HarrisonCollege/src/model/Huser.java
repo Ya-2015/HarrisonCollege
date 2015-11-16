@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  * 
  */
 @Entity
-@Table(name="HUSER", schema="testuserdb")
+@Table(name="Huser", schema="testuserdb")
 @NamedQuery(name="Huser.findAll", query="SELECT h FROM Huser h")
 public class Huser implements Serializable {
 	private static final long serialVersionUID = 1L;

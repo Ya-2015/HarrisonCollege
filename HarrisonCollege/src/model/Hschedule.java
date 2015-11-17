@@ -19,7 +19,7 @@ public class Hschedule implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="HSCHEDULE_SCHEDULECODE_GENERATOR" )
+	@SequenceGenerator(schema="testuserdb",name="HSCHEDULE_SCHEDULECODE_GENERATOR",sequenceName="HSCHEDULE_SEQ",allocationSize=1 )
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HSCHEDULE_SCHEDULECODE_GENERATOR")
 	private long schedulecode;
 

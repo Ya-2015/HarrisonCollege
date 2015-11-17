@@ -18,7 +18,7 @@ public class Hinstructor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="HINSTRUCTOR_INSTRUCTORNUM_GENERATOR" )
+	@SequenceGenerator(schema="testuserdb",name="HINSTRUCTOR_INSTRUCTORNUM_GENERATOR",sequenceName="HINSTRUCTOR_SEQ",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HINSTRUCTOR_INSTRUCTORNUM_GENERATOR")
 	private long instructornum;
 

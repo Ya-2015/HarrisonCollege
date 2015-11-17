@@ -19,7 +19,7 @@ public class Hsemester implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="HSEMESTER_SEMESTERCODE_GENERATOR" )
+	@SequenceGenerator(schema="testuserdb",name="HSEMESTER_SEMESTERCODE_GENERATOR",sequenceName="HSEMESTER_SEQ1",allocationSize=1 )
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HSEMESTER_SEMESTERCODE_GENERATOR")
 	private long semestercode;
 

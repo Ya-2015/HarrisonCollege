@@ -16,7 +16,7 @@ public class Henrollment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="HENROLLMENT_ENROLLMENTNUM_GENERATOR" )
+	@SequenceGenerator(schema="testuserdb",name="HENROLLMENT_ENROLLMENTNUM_GENERATOR",sequenceName="HENROLLMENT_SEQ",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HENROLLMENT_ENROLLMENTNUM_GENERATOR")
 	private long enrollmentnum;
 

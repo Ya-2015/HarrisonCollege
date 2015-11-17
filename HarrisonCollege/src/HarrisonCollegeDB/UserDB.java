@@ -5,15 +5,20 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import model.Hcourse;
 import model.Hdepartment;
+import model.Hinstructor;
+import model.Hschedule;
 import DBUtil.DBUtil;
 
 public class UserDB {
 	//******************************************
-	//course
+	//Course Related****************************
+	//******************************************
+	//all courses
 	public ArrayList<Hcourse> getAllCourses(){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		List<Hcourse> fd = null;
@@ -33,13 +38,39 @@ public class UserDB {
 		return new ArrayList<Hcourse>(fd);
 	}
 	
-	//*****************************************
+	//all unique subjects
+	public ArrayList<String> getAllUniqueSubjests(){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<String> fd = null;
+		
+		try {
+			String sql = "select DISTINCT c.subjectcode from Hcourse c";
+			TypedQuery<String> q = em.createQuery(sql, String.class);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<String>(fd);
+	}
+	
+	//******************************************
+	//Department Related************************
+	//******************************************
 	//department
-	public boolean addNewDepartment(Hdepartment department){
+	public boolean addNewDepartment(String departmentName){
 		boolean isSuccess = false;
 		
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
+		
+		Hdepartment department = new Hdepartment();
+		department.setDepartname(departmentName);
+		department.setStatuscode(1);
 		
 		trans.begin();
 		
@@ -57,4 +88,66 @@ public class UserDB {
 		return isSuccess;
 	}
 
+	public ArrayList<Hdepartment> getAllDepartments(){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Hdepartment> fd = null;
+		
+		try {
+			String sql = "select d from Hdepartment d";
+			TypedQuery<Hdepartment> q = em.createQuery(sql, Hdepartment.class);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Hdepartment>(fd);
+	}
+	
+	//******************************************
+	//Instructor Related************************
+	//******************************************
+	public ArrayList<Hinstructor> getAllInstructors(){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Hinstructor> fd = null;
+		
+		try {
+			String sql = "select i from Hinstructor i";
+			TypedQuery<Hinstructor> q = em.createQuery(sql, Hinstructor.class);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Hinstructor>(fd);
+	}
+	
+	//******************************************
+	//Schedule Related**************************
+	//******************************************
+	public ArrayList<Hschedule> getAllSchedule(){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Hschedule> fd = null;
+		
+		try {
+			String sql = "select s from Hschedule s";
+			TypedQuery<Hschedule> q = em.createQuery(sql, Hschedule.class);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Hschedule>(fd);
+	}
 }

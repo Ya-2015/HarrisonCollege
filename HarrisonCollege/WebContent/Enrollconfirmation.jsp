@@ -28,11 +28,14 @@
         
         
        <label>Enrolled Class:</label>
-       ${Enrolledclass.crn}
+         <p>${Enrolledclass.crn} ${Enrolledclass.hschedule.dow1} ${Enrolledclass.hschedule.dow2}  ${Enrolledclass.hschedule.hour12}:${Enrolledclass.hschedule.minutes60}${Enrolledclass.hschedule.ampm} 
+         
+          ${Enrolledclass.hinstructor.instructorname}  ${Enrolledclass.hclassroom.bldgname} ${Enrolledclass.hclassroom.roomnumber}</p>
+       
       </div>
-     
+
       </div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->

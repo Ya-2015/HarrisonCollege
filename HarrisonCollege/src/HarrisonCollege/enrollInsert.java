@@ -44,7 +44,7 @@ public class enrollInsert extends HttpServlet {
 		int studentNum =Integer.parseInt(strstudentnum);
 		
 
-		Hstudent stu = db.getStudentById(studentNum);
+		Hstudent stu = db.getStudentProfileByStuNum(studentNum);
 		Hclass enrollClass=db.getClassById(classnum);
 		if (stu!=null){
 			db.enrollClass(classnum, studentNum); //3=CLASSNUM NEED TO PASS

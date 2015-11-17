@@ -10,7 +10,9 @@ import model.Henrollment;
 import model.Hinstructor;
 import model.Hschedule;
 import model.Hstudent;
+import model.Huser;
 import HarrisonCollegeDB.CollegeDB;
+import HarrisonCollegeDB.UserDB;
 
 
 public class tryMain {
@@ -18,6 +20,7 @@ public class tryMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		CollegeDB uDB = new CollegeDB();
+		UserDB userDB = new UserDB();
 		
 		//get all courses
 		ArrayList<Hcourse> courses = uDB.getAllCourses();
@@ -69,7 +72,7 @@ public class tryMain {
 		
 		//enroll class 
 		System.out.println();
-		Hstudent stuu = uDB.getStudentById(1);
+		Hstudent stuu = uDB.getStudentProfileByStuNum(1);
 		Hclass clas = uDB.getClassById(2);
 //		System.out.println("Enroll "+stuu.getStudentname().toUpperCase() + " to "+clas.getClassnum() + " with course: "+clas.getHcourse().getCoursename());
 //		uDB.enrollClass(1, 1);
@@ -98,6 +101,24 @@ public class tryMain {
 //		System.out.println("unenroll class for: "+enr.getHstudent().getStudentname());
 		//drop class
 		System.out.println(uDB.unenrollClass(1, 1));
+		
+		//get user profile
+		System.out.println();
+		Huser user = userDB.getUserProfile("yaliu001", "111");
+		if(user == null){
+			System.out.println("incorrent");
+		}else{
+			System.out.println("NetId: "+user.getNetid() + " \tUser Type:" + user.getUsertype());
+		}
+		
+		//get student profile by netid
+		System.out.println("\nget student profile by netid");
+		Hstudent s1 = uDB.getStudentProfileByNetId("yaliu001");
+		if(s1 == null){
+			System.out.println("incorrent");
+		}else{
+			System.out.println("Stu Name: "+s1.getStudentname()+" "+"Stu Num: "+ s1.getStudentnum());
+		}
 		
 	}
 

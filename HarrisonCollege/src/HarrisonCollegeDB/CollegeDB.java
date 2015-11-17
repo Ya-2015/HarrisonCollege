@@ -176,7 +176,7 @@ public class CollegeDB {
 		return new ArrayList<Hstudent>(fd);
 	}
 	
-	public Hstudent getStudentById(int stuNum){
+	public Hstudent getStudentProfileByStuNum(int stuNum){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		Hstudent fd = null;
 		
@@ -184,6 +184,26 @@ public class CollegeDB {
 			String sql = "select s from Hstudent s where s.studentnum = ?1";
 			TypedQuery<Hstudent> q = em.createQuery(sql, Hstudent.class);
 			q.setParameter(1, stuNum);
+			
+			fd = q.getSingleResult();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return fd;
+	}
+	
+	public Hstudent getStudentProfileByNetId(String netId){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		Hstudent fd = null;
+		
+		try {
+			String sql = "select s from Hstudent s where s.netid = ?1";
+			TypedQuery<Hstudent> q = em.createQuery(sql, Hstudent.class);
+			q.setParameter(1, netId);
 			
 			fd = q.getSingleResult();
 			
@@ -285,7 +305,7 @@ public class CollegeDB {
 		boolean isSuccess = false;
 		
 		//get student
-		Hstudent stu = getStudentById(stuNum);
+		Hstudent stu = getStudentProfileByStuNum(stuNum);
 		
 		//get class
 		Hclass cls = getClassById(clsNum);

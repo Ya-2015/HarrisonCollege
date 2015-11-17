@@ -3,10 +3,12 @@ package tryDB;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import model.Hclass;
 import model.Hcourse;
 import model.Hdepartment;
 import model.Hinstructor;
 import model.Hschedule;
+import model.Hstudent;
 import HarrisonCollegeDB.CollegeDB;
 
 
@@ -55,6 +57,20 @@ public class tryMain {
 		ArrayList<Hschedule> sch = uDB.getAllSchedule();
 		for (Hschedule s : sch){
 			System.out.println(s.getDow1().toUpperCase() + " "+((s.getDow2()!=null)?s.getDow2().toUpperCase():"")+" " + s.getHour12() + ":"+s.getMinutes60()+s.getAmpm().toUpperCase());
+		}
+		
+		//get all students
+		System.out.println();
+		ArrayList<Hstudent> stu = uDB.getAllStudents();
+		for (Hstudent s : stu){
+			System.out.println(s.getStudentname()+" "+s.getStudentnum());
+		}
+		
+		//get class by student by semester
+		System.out.println();
+		ArrayList<Hclass> cls = uDB.getClassByStudentBySemester(1, 1);
+		for (Hclass c : cls){
+			System.out.println("Course: "+ c.getHcourse().getCoursename() + " Class Num:" + c.getClassnum());
 		}
 	}
 

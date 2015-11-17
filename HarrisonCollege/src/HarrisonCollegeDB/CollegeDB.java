@@ -8,10 +8,13 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import model.Hclass;
 import model.Hcourse;
 import model.Hdepartment;
+import model.Henrollment;
 import model.Hinstructor;
 import model.Hschedule;
+import model.Hstudent;
 import DBUtil.DBUtil;
 
 public class CollegeDB {
@@ -149,5 +152,48 @@ public class CollegeDB {
 		}
 		
 		return new ArrayList<Hschedule>(fd);
+	}
+	
+	//******************************************
+	//Student Related**************************
+	//******************************************
+	public ArrayList<Hstudent> getAllStudents(){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Hstudent> fd = null;
+		
+		try {
+			String sql = "select s from Hstudent s";
+			TypedQuery<Hstudent> q = em.createQuery(sql, Hstudent.class);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Hstudent>(fd);
+	}
+	
+	public ArrayList<Hclass> getClassByStudentBySemester(int stuNum, int semesterCode){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Hclass> fd = null;
+		
+		try {
+			String sql = "select e.hclass from Henrollment e where e.hstudent.studentnum = ?1 and e.hclass.hsemester.semestercode = ?2";
+			TypedQuery<Hclass> q = em.createQuery(sql, Hclass.class);
+			q.setParameter(1, stuNum);
+			q.setParameter(2, semesterCode);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Hclass>(fd);
 	}
 }

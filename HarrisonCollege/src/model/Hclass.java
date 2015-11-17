@@ -21,7 +21,7 @@ public class Hclass implements Serializable {
 	@Id
 	@SequenceGenerator(schema="testuserdb",name="HCLASS_CLASSNUM_GENERATOR",sequenceName="HCLASS_SEQ",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HCLASS_CLASSNUM_GENERATOR")
-	private long classnum;
+	private int classnum;
 
 	private String crn;
 
@@ -59,11 +59,11 @@ public class Hclass implements Serializable {
 	public Hclass() {
 	}
 
-	public long getClassnum() {
+	public int getClassnum() {
 		return this.classnum;
 	}
 
-	public void setClassnum(long classnum) {
+	public void setClassnum(int classnum) {
 		this.classnum = classnum;
 	}
 

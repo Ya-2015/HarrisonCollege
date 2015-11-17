@@ -176,6 +176,68 @@ public class CollegeDB {
 		return new ArrayList<Hstudent>(fd);
 	}
 	
+	public Hstudent getStudentById(int stuNum){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		Hstudent fd = null;
+		
+		try {
+			String sql = "select s from Hstudent s where s.studentnum = ?1";
+			TypedQuery<Hstudent> q = em.createQuery(sql, Hstudent.class);
+			q.setParameter(1, stuNum);
+			
+			fd = q.getSingleResult();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return fd;
+	}
+	//******************************************
+	//Class Related*****************************
+	//******************************************
+	public Hclass getClassById(int classNum){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		Hclass fd = null;
+		
+		try {
+			String sql = "select c from Hclass c where c.classnum = ?1";
+			TypedQuery<Hclass> q = em.createQuery(sql, Hclass.class);
+			q.setParameter(1, classNum);
+			
+			fd = q.getSingleResult();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return fd;
+	}
+	
+	public ArrayList<Hclass> getClassBySemester(int semesterCode){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Hclass> fd = null;
+		
+		try {
+			String sql = "select c from Hclass c where c.hsemester.semestercode = ?1";
+			TypedQuery<Hclass> q = em.createQuery(sql, Hclass.class);
+			q.setParameter(1, semesterCode);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Hclass>(fd);
+	}
+	
 	public ArrayList<Hclass> getClassByStudentBySemester(int stuNum, int semesterCode){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		List<Hclass> fd = null;
@@ -196,4 +258,40 @@ public class CollegeDB {
 		
 		return new ArrayList<Hclass>(fd);
 	}
+	//******************************************
+	//(Un)Enrollment Related********************
+	//******************************************
+	public boolean enrollClass(int clsNum, int stuNum){
+		boolean isSuccess = false;
+		
+		//get student
+		Hstudent stu = getStudentById(stuNum);
+		
+		//get class
+		Hclass cls = getClassById(clsNum);
+		
+		//enroll a student to a class
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		
+		Henrollment enrollment = new Henrollment();
+		enrollment.setHclass(cls);
+		enrollment.setHstudent(stu);
+
+		trans.begin();
+		
+		try{
+			em.persist(enrollment);
+			trans.commit();
+			isSuccess = true;
+		}catch(Exception e){
+			System.out.println(e);
+			trans.rollback();
+		}finally{
+			em.close();
+		}
+		
+		return isSuccess;
+	}
+	
 }

@@ -63,15 +63,35 @@ public class tryMain {
 		System.out.println();
 		ArrayList<Hstudent> stu = uDB.getAllStudents();
 		for (Hstudent s : stu){
-			System.out.println(s.getStudentname()+" "+s.getStudentnum());
+			System.out.println(s.getStudentname().toUpperCase()+" "+s.getStudentnum());
 		}
+		
+		//enroll class 
+		System.out.println();
+		Hstudent stuu = uDB.getStudentById(1);
+		Hclass clas = uDB.getClassById(2);
+		System.out.println("Enroll "+stuu.getStudentname().toUpperCase() + " to "+clas.getClassnum() + " with course: "+clas.getHcourse().getCoursename());
+		uDB.enrollClass(2, 1);
 		
 		//get class by student by semester
 		System.out.println();
+		
+		System.out.println(stuu.getStudentname().toUpperCase() + " current semester classes");
 		ArrayList<Hclass> cls = uDB.getClassByStudentBySemester(1, 1);
 		for (Hclass c : cls){
 			System.out.println("Course: "+ c.getHcourse().getCoursename() + " Class Num:" + c.getClassnum());
 		}
+		
+		
+		
+		//get class by semester
+		System.out.println();
+		System.out.println("Current Classes");
+		ArrayList<Hclass> clss = uDB.getClassBySemester(1);
+		for (Hclass c : clss){
+			System.out.println("Course: "+ c.getHcourse().getCoursename() + " Class Num:" + c.getClassnum());
+		}
+		
 	}
 
 }

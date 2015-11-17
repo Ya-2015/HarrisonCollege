@@ -109,7 +109,7 @@ public class EnrollClassServlet extends HttpServlet {
 						+ "</td><td>"
 						+ dataset.getHschedule().getHour12()
 						+ "</td><td>"
-						+ "<a href=\"/enroll.jsp?Enrolledclass = "
+						+ "<a href=\"enroll.jsp?Enrolledclass="
 						+ dataset.getClassnum()
 						+ "\" class=\"btn btn-info\" role=\"button\">Add Class</a>"
 						+ "</td></tr>" + "</div>";
@@ -132,7 +132,7 @@ public class EnrollClassServlet extends HttpServlet {
 						+ "</td><td>"
 						+ dataset.getHschedule().getHour12()
 						+ "</td><td>"
-						+ "<a href=\"/enroll.jsp?Enrolledclass = "
+						+ "<a href=\"enroll.jsp?Enrolledclass="
 						+ dataset.getClassnum()
 						+ "\" class=\"btn btn-info\" role=\"button\">Add Class</a>"
 						+ "</td></tr>" + "</div>";

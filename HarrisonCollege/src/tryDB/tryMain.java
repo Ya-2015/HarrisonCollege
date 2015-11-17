@@ -12,7 +12,7 @@ import model.Hschedule;
 import model.Hstudent;
 import model.Huser;
 import HarrisonCollegeDB.CollegeDB;
-import HarrisonCollegeDB.UserDB;
+
 
 
 public class tryMain {
@@ -20,7 +20,6 @@ public class tryMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		CollegeDB uDB = new CollegeDB();
-		UserDB userDB = new UserDB();
 		
 		//get all courses
 		ArrayList<Hcourse> courses = uDB.getAllCourses();
@@ -104,7 +103,7 @@ public class tryMain {
 		
 		//get user profile
 		System.out.println();
-		Huser user = userDB.getUserProfile("yaliu001", "111");
+		Huser user = uDB.getUserProfile("yaliu001", "111");
 		if(user == null){
 			System.out.println("incorrent");
 		}else{

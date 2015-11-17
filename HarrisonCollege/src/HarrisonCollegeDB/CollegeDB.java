@@ -198,6 +198,26 @@ public class CollegeDB {
 	//******************************************
 	//Class Related*****************************
 	//******************************************
+	//all classes
+		public ArrayList<Hclass> getAllClasses(){
+			EntityManager em = DBUtil.getEmFactory().createEntityManager();
+			List<Hclass> fd = null;
+			
+			try {
+				String sql = "select c from Hclass c";
+				TypedQuery<Hclass> q = em.createQuery(sql, Hclass.class);
+				
+				fd = q.getResultList();
+				
+			} catch (Exception e){
+				System.out.println(e);
+			} finally {
+				em.close();
+			}
+			
+			return new ArrayList<Hclass>(fd);
+		}
+		
 	public Hclass getClassById(int classNum){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		Hclass fd = null;

@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,11 +23,18 @@
 	response.sendRedirect("HomePage"); %>
 <body>
 	<jsp:include page="/Navbar.jsp" />
-	<div class="container" style="overflow-y: scroll">
-		<div class="container" style="background-color: white">
+	<div class="container" style="background-color: white">
+		<div class="container" style="overflow-y: scroll">
 			<table class="table table-striped">
 
 				<tr>
+
+					<th><div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button"
+								data-toggle="dropdown">Class Code</button>
+
+						</div></th>
+
 					<th><div class="dropdown">
 							<button class="btn btn-primary dropdown-toggle" type="button"
 								data-toggle="dropdown">
@@ -36,6 +44,7 @@
 							</ul>
 						</div></th>
 
+
 					<th><div class="dropdown">
 							<button class="btn btn-primary dropdown-toggle" type="button"
 								data-toggle="dropdown">
@@ -44,16 +53,35 @@
 							<ul class="dropdown-menu">${subjectDropdown}
 							</ul>
 						</div></th>
+
+					<th><div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button"
+								data-toggle="dropdown">Description</button>
+
+						</div></th>
+
 					<th><div class="dropdown">
 							<button class="btn btn-primary dropdown-toggle" type="button"
 								data-toggle="dropdown">
-								Description <span class="caret"></span>
+								Instructor <span class="caret"></span>
 							</button>
-
+							<ul class="dropdown-menu">${instructorDropdown}
+							</ul>
 						</div></th>
+
 					<th><div class="dropdown">
 							<button class="btn btn-primary dropdown-toggle" type="button"
-								data-toggle="dropdown">Credits</button>
+								data-toggle="dropdown">DOW</button>
+
+						</div></th>
+
+					<th><div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button"
+								data-toggle="dropdown">
+								Time <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">${timeDropdown}
+							</ul>
 						</div></th>
 
 					<th><a href="SortManagerServlet" class="btn btn-info"
@@ -61,7 +89,7 @@
 					<th></th>
 				</tr>
 
-				${courseTable}
+				${classTable}
 			</table>
 		</div>
 	</div>

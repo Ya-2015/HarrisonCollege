@@ -24,10 +24,10 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">Course Manager</div>
 				<div class="panel-body">
-					<a href="">Add Courses</a><br>
+					<a href="EnrollClassServlet">Add Courses</a><br>
 					<a href="">Drop Courses</a><br>
 					<a href="">Current Schedule</a><br>
-					<a href="">Go To Course Explorer</a><br>
+					<a href="CourseExplorerMainServlet">Go To Course Explorer</a><br>
 				</div>
 			</div>
 			<div class="panel panel-info">

@@ -59,38 +59,40 @@ public class ClassExplorerMainServlet extends HttpServlet {
 		ArrayList<Hdepartment> depar = uDB.getAllDepartments();
 		for (Hdepartment d : depar) {
 			departmentDropdown = departmentDropdown
-					+ "<li><input type=\"checkbox\" name=\"departmentid\" id=\"departmentid\" value="
-					+ d.getCode() + "><label for=\"departmentid\">"
-					+ d.getDepartname() + "</label></li>";
+					+ "<li><a href = \"departmentFilter?departmentID="
+					+ d.getCode() + "\">"
+					+ d.getDepartname() + "</a></li>";
 		}
 
 		String instructorDropdown = "";
 		ArrayList<Hinstructor> ins = uDB.getAllInstructors();
 		for (Hinstructor i : ins) {
 			instructorDropdown = instructorDropdown
-					+ "<li><input type=\"checkbox\" name=\"departmentid\" id=\"departmentid\" value="
-					+ i.getNetid() + "><label for=\"departmentid\">"
-					+ i.getInstructorname() + "</label></li>";
+					+ "<li><a href = \"instructorFilter?instructorID="
+					+ i.getNetid() + "\">"
+					+i.getInstructorname() + "</a></li>";
 		}
 
 		String subjectDropdown = "";
 		ArrayList<String> subject = uDB.getAllUniqueSubjests();
 		for (String sub : subject) {
 			subjectDropdown = subjectDropdown
-					+ "<li><input type=\"checkbox\" name=\"departmentid\" id=\"departmentid\" value="
-					+ sub + "><label for=\"departmentid\">" + sub
-					+ "</label></li>";
+					+ "<li><a href = \"subjectFilter?subjectID="
+					+sub + "\">"
+					+sub + "</a></li>";
 		}
 
 		String timeDropdown = "";
 		ArrayList<Hschedule> sch = uDB.getAllSchedule();
 		for (Hschedule s : sch) {
 			timeDropdown = timeDropdown
-					+ "<li><input type=\"checkbox\" name=\"departmentid\" id=\"departmentid\" value="
-					+ s.getHour12() + "><label for=\"departmentid\">"
-					+ s.getHour12() + "</label></li>";
+					+ "<li><a href = \"timeFilter?timeID="
+					+ s.getHour12() + "\">"
+					+ s.getHour12()+ "</a></li>";
 		}
-		String classTable = "";
+		
+		
+	String classTable = "";
 		ArrayList<Hclass> data = uDB.getAllClasses();
 		for (Hclass dataset : data) {
 			if (dataset.getHschedule().getDow2() == null) {

@@ -16,53 +16,57 @@
 	integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
 	crossorigin="anonymous">
 </head>
-<%//HttpSession session = request.getSession();
+<%
+	//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
 	if (uName != null)
-	response.sendRedirect("HomePage"); %>
+		response.sendRedirect("HomePage");
+%>
 <body>
 	<jsp:include page="/Navbar.jsp" />
 	<div class="container" style="overflow-y: scroll">
 		<div class="container" style="background-color: white">
-			<table class="table table-striped">
+			<form action="Test.jsp" method="GET">
+				<table class="table table-striped">
 
-				<tr>
-					<th><div class="dropdown">
-							<button class="btn btn-primary dropdown-toggle" type="button"
-								data-toggle="dropdown">
-								Department <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu noclose">${departmentDropdown}
-							</ul>
-						</div></th>
+					<tr>
+						<th><div class="dropdown">
+								<button class="btn btn-primary dropdown-toggle" type="button"
+									data-toggle="dropdown">
+									Department <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu noclose">${departmentDropdown}
+								</ul>
+							</div></th>
 
-					<th><div class="dropdown">
-							<button class="btn btn-primary dropdown-toggle" type="button"
-								data-toggle="dropdown">
-								Subject <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">${subjectDropdown}
-							</ul>
-						</div></th>
-					<th><div class="dropdown">
-							<button class="btn btn-primary dropdown-toggle" type="button"
-								data-toggle="dropdown">
-								Description <span class="caret"></span>
-							</button>
+						<th><div class="dropdown">
+								<button class="btn btn-primary dropdown-toggle" type="button"
+									data-toggle="dropdown">
+									Subject <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">${subjectDropdown}
+								</ul>
+							</div></th>
+						<th><div class="dropdown">
+								<button class="btn btn-primary dropdown-toggle" type="button"
+									data-toggle="dropdown">
+									Description <span class="caret"></span>
+								</button>
 
-						</div></th>
-					<th><div class="dropdown">
-							<button class="btn btn-primary dropdown-toggle" type="button"
-								data-toggle="dropdown">Credits</button>
-						</div></th>
+							</div></th>
+						<th><div class="dropdown">
+								<button class="btn btn-primary dropdown-toggle" type="button"
+									data-toggle="dropdown">Credits</button>
+							</div></th>
 
-					<th><a href="SortManagerServlet" class="btn btn-info"
-						role="button">Sort</a></th>
-					<th></th>
-				</tr>
+						<th><a href="SortManagerServlet" class="btn btn-info"
+							role="button">Sort</a></th>
+						<th></th>
+					</tr>
 
-				${courseTable}
-			</table>
+					${courseTable}
+				</table>
+			</form>
 		</div>
 	</div>
 	<jsp:include page="/Footer.jsp" />

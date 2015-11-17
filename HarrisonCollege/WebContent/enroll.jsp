@@ -12,38 +12,56 @@
 	integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
 	crossorigin="anonymous">
 </head>
-<%//HttpSession session = request.getSession();
+<%
+	//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
 	if (uName != null)
-	response.sendRedirect("HomePage"); %>
+		response.sendRedirect("HomePage");
+%>
 <body>
 	<jsp:include page="/Navbar.jsp" />
 
+	<c:choose>
+		<c:when test="${sessionScope.usertype.equals("advisor")}">
+			<div class="panel panel-default">
 
+				<div class="panel-body">
+					<form action="enrollInsert" method="post">
 
+						<label>Enrolled Class:</label><input type="text"
+							name="enrolledclass" size="20"
+							value="<%=request.getParameter("Enrolledclass")%>" /> <br>
+						<br> <label>Student Number:</label> <input type="text"
+							size=20 value="" name="studentNumber"
+							, placeholder="Your student number"> <br> <br>
+						<button type="submit" class="btn btn-info">Submit</button>
+					</form>
 
-<div class="panel panel-default">
+				</div>
+			</div>
+		</c:when>
+		<c:when test="${sessionScope.usertype.equals("student")}">
+			<div class="panel panel-default">
 
-  <div class="panel-body">
-  <form action="enrollInsert" method="post">
- 
-  <label>Enrolled Class:</label><input type="text" name="enrolledclass" size="20" value="<%= request.getParameter("Enrolledclass") %>"/>
-  <br>
-  <br>
-  <label>Student Number:</label> <input type = "text" size=20 value = "" name ="studentNumber", placeholder="Your student number">
-  <br>
-  <br>
-  <button type="submit" class="btn btn-info">Submit</button>		
-  </form>
-  	
-  </div>
-  </div>
- 
+				<div class="panel-body">
+					<form action="enrollInsert" method="post">
 
-	
-	<jsp:include page="/Footer.jsp" />
+						<label>Enrolled Class:</label><input type="text"
+							name="enrolledclass" size="20"
+							value="<%=request.getParameter("Enrolledclass")%>" /> <br>
+						<br> <label>Student Number:</label> <input type="text"
+							size=20
+							value="<%=(Integer) session.getAttribute("studentNumber")%>"
+							name="studentNumber" , placeholder="Your student number">
+						<br> <br>
+						<button type="submit" class="btn btn-info">Submit</button>
+					</form>
 
-	
+				</div>
+			</div>
 
+			<jsp:include page="/Footer.jsp" />
+		</c:when>
+	</c:choose>
 </body>
 </html>

@@ -25,7 +25,9 @@
 	<jsp:include page="/Navbar.jsp" />
 	<div class="container" style="background-color: white">
 		<div class="container" style="overflow-y: scroll">
+
 			<table class="table table-striped">
+
 
 				<tr>
 
@@ -83,14 +85,10 @@
 							<ul class="dropdown-menu">${timeDropdown}
 							</ul>
 						</div></th>
-
-					<th><a href="SortManagerServlet" class="btn btn-info"
-						role="button">Sort</a></th>
-					<th></th>
 				</tr>
-
 				${classTable}
 			</table>
+
 		</div>
 	</div>
 	<jsp:include page="/Footer.jsp" />

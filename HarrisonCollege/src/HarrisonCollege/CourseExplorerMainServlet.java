@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import model.Hcourse;
 import model.Hdepartment;
 import model.Hinstructor;
-
 import HarrisonCollegeDB.CollegeDB;
 
 
@@ -54,36 +53,35 @@ public class CourseExplorerMainServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		int j = 0;
 		double avgRating = 0;
-		HttpSession session = request.getSession();
+		
+		
 		String departmentDropdown = "";
 		ArrayList<Hdepartment> depar = uDB.getAllDepartments();
 		for (Hdepartment d : depar) {
 			departmentDropdown = departmentDropdown
-					+ "<li><input type=\"checkbox\" name=\"departmentid\" id=\"departmentid\" value="
-					+ d.getCode() + "><label for=\"departmentid\">"
-					+ d.getDepartname() + "</label></li>";
+					+ "<li><a href = \"departmentFilter?departmentID="
+					+ d.getCode() + "\">"
+					+ d.getDepartname() + "</a></li>";
 		}
 
 		
-
 		String instructorDropdown = "";
 		ArrayList<Hinstructor> ins = uDB.getAllInstructors();
-		for (Hinstructor i : ins){
+		for (Hinstructor i : ins) {
 			instructorDropdown = instructorDropdown
-					+ "<li><input type=\"checkbox\" name=\"departmentid\" id=\"departmentid\" value="
-					+ i.getNetid() + "><label for=\"departmentid\">"
-					+ i.getInstructorname() + "</label></li>";
+					+ "<li><a href = \"instructorFilter?instructorID="
+					+ i.getNetid() + "\">"
+					+i.getInstructorname() + "</a></li>";
 		}
 		
 		String subjectDropdown = "";
-		ArrayList<String> subject = uDB.getAllUniqueSubjests();		
-		for (String s : subject){
+		ArrayList<String> subject = uDB.getAllUniqueSubjests();
+		for (String sub : subject) {
 			subjectDropdown = subjectDropdown
-					+ "<li><input type=\"checkbox\" name=\"departmentid\" id=\"departmentid\" value="
-					+s + "><label for=\"departmentid\">"
-					+ s + "</label></li>";
+					+ "<li><a href = \"subjectFilter?subjectID="
+					+sub + "\">"
+					+sub + "</a></li>";
 		}
-
 	
 		
 		String courseTable = "";

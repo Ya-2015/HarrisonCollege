@@ -21,7 +21,7 @@ public class Hstudent implements Serializable {
 	@Id
 	@SequenceGenerator(schema="testuserdb",name="HSTUDENT_STUDENTNUM_GENERATOR",sequenceName="HSTUDENT_SEQ",allocationSize=1 )
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HSTUDENT_STUDENTNUM_GENERATOR")
-	private long studentnum;
+	private int studentnum;
 
 	private String netid;
 
@@ -41,11 +41,11 @@ public class Hstudent implements Serializable {
 	public Hstudent() {
 	}
 
-	public long getStudentnum() {
+	public int getStudentnum() {
 		return this.studentnum;
 	}
 
-	public void setStudentnum(long studentnum) {
+	public void setStudentnum(int studentnum) {
 		this.studentnum = studentnum;
 	}
 

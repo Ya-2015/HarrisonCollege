@@ -21,7 +21,7 @@ public class Hsemester implements Serializable {
 	@Id
 	@SequenceGenerator(schema="testuserdb",name="HSEMESTER_SEMESTERCODE_GENERATOR",sequenceName="HSEMESTER_SEQ1",allocationSize=1 )
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HSEMESTER_SEMESTERCODE_GENERATOR")
-	private long semestercode;
+	private int semestercode;
 
 	private BigDecimal hyear;
 
@@ -34,11 +34,11 @@ public class Hsemester implements Serializable {
 	public Hsemester() {
 	}
 
-	public long getSemestercode() {
+	public int getSemestercode() {
 		return this.semestercode;
 	}
 
-	public void setSemestercode(long semestercode) {
+	public void setSemestercode(int semestercode) {
 		this.semestercode = semestercode;
 	}
 

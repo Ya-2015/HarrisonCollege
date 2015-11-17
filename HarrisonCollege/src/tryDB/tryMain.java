@@ -71,7 +71,7 @@ public class tryMain {
 		Hstudent stuu = uDB.getStudentById(1);
 		Hclass clas = uDB.getClassById(2);
 //		System.out.println("Enroll "+stuu.getStudentname().toUpperCase() + " to "+clas.getClassnum() + " with course: "+clas.getHcourse().getCoursename());
-//		uDB.enrollClass(2, 1);
+//		uDB.enrollClass(2, 10);
 		
 		//get class by student by semester
 		System.out.println();

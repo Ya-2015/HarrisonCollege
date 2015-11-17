@@ -7,13 +7,14 @@ import model.Hcourse;
 import model.Hdepartment;
 import model.Hinstructor;
 import model.Hschedule;
-import HarrisonCollegeDB.UserDB;
+import HarrisonCollegeDB.CollegeDB;
+
 
 public class tryMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		UserDB uDB = new UserDB();
+		CollegeDB uDB = new CollegeDB();
 		
 		//get all courses
 		ArrayList<Hcourse> courses = uDB.getAllCourses();

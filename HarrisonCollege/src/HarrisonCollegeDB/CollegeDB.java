@@ -14,7 +14,7 @@ import model.Hinstructor;
 import model.Hschedule;
 import DBUtil.DBUtil;
 
-public class UserDB {
+public class CollegeDB {
 	//******************************************
 	//Course Related****************************
 	//******************************************

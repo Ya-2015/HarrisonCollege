@@ -199,24 +199,24 @@ public class CollegeDB {
 	//Class Related*****************************
 	//******************************************
 	//all classes
-		public ArrayList<Hclass> getAllClasses(){
-			EntityManager em = DBUtil.getEmFactory().createEntityManager();
-			List<Hclass> fd = null;
+	public ArrayList<Hclass> getAllClasses(){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Hclass> fd = null;
+		
+		try {
+			String sql = "select c from Hclass c";
+			TypedQuery<Hclass> q = em.createQuery(sql, Hclass.class);
 			
-			try {
-				String sql = "select c from Hclass c";
-				TypedQuery<Hclass> q = em.createQuery(sql, Hclass.class);
-				
-				fd = q.getResultList();
-				
-			} catch (Exception e){
-				System.out.println(e);
-			} finally {
-				em.close();
-			}
+			fd = q.getResultList();
 			
-			return new ArrayList<Hclass>(fd);
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
 		}
+		
+		return new ArrayList<Hclass>(fd);
+	}
 		
 	public Hclass getClassById(int classNum){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -290,6 +290,10 @@ public class CollegeDB {
 		//get class
 		Hclass cls = getClassById(clsNum);
 		
+		if(stu == null || cls == null){
+			return false;
+		}
+		
 		//enroll a student to a class
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
@@ -314,4 +318,53 @@ public class CollegeDB {
 		return isSuccess;
 	}
 	
+	public boolean unenrollClass(int clsNum, int stuNum){
+		boolean isSuccess = false;
+		
+		//get enrollment
+		Henrollment enroll = getEnrollmentByStudentByClass(clsNum, stuNum);
+		if(enroll == null){
+			return false;
+		}
+		
+		//unenroll a student to a class
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+
+		trans.begin();
+		
+		try{
+			em.remove(em.merge(enroll));
+			trans.commit();
+			isSuccess = true;
+		}catch(Exception e){
+			System.out.println(e);
+			trans.rollback();
+		}finally{
+			em.close();
+		}
+		
+		return isSuccess;
+	}
+	
+	public Henrollment getEnrollmentByStudentByClass(int classNum, int stuNum){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		Henrollment fd = null;
+		
+		try {
+			String sql = "select en from Henrollment en where en.hclass.classnum = ?1 and en.hstudent.studentnum = ?2";
+			TypedQuery<Henrollment> q = em.createQuery(sql, Henrollment.class);
+			q.setParameter(1, classNum);
+			q.setParameter(2, stuNum);
+			
+			fd = q.getSingleResult();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return fd;
+	}
 }

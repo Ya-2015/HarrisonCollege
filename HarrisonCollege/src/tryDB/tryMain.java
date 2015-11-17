@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import model.Hclass;
 import model.Hcourse;
 import model.Hdepartment;
+import model.Henrollment;
 import model.Hinstructor;
 import model.Hschedule;
 import model.Hstudent;
@@ -71,7 +72,7 @@ public class tryMain {
 		Hstudent stuu = uDB.getStudentById(1);
 		Hclass clas = uDB.getClassById(2);
 //		System.out.println("Enroll "+stuu.getStudentname().toUpperCase() + " to "+clas.getClassnum() + " with course: "+clas.getHcourse().getCoursename());
-//		uDB.enrollClass(2, 10);
+//		uDB.enrollClass(1, 1);
 		
 		//get class by student by semester
 		System.out.println();
@@ -91,6 +92,12 @@ public class tryMain {
 		for (Hclass c : clss){
 			System.out.println("Course: "+ c.getHcourse().getCoursename() + " Class Num:" + c.getClassnum());
 		}
+		
+		//check enrollment
+//		Henrollment enr = uDB.getEnrollmentByStudentByClass(1, 1);
+//		System.out.println("unenroll class for: "+enr.getHstudent().getStudentname());
+		//drop class
+		System.out.println(uDB.unenrollClass(1, 1));
 		
 	}
 

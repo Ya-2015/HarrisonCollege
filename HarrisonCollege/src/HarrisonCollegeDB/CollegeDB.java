@@ -83,6 +83,28 @@ public class CollegeDB {
 		return fd;
 	}
 	
+	public boolean updateCourse(Hcourse course){
+		boolean isSuccess = false;
+		
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		
+		trans.begin();
+		
+		try{
+			em.merge(course);
+			trans.commit();
+			isSuccess = true;
+		}catch(Exception e){
+			System.out.println(e);
+			trans.rollback();
+		}finally{
+			em.close();
+		}
+		
+		return isSuccess;
+	}
+	
 	public boolean updateCourseStatus(int courseNum, int status){
 		boolean isSuccess = false;
 		
@@ -104,6 +126,41 @@ public class CollegeDB {
 		
 		try{
 			em.merge(crs);
+			trans.commit();
+			isSuccess = true;
+		}catch(Exception e){
+			System.out.println(e);
+			trans.rollback();
+		}finally{
+			em.close();
+		}
+		
+		return isSuccess;
+	}
+	
+	public boolean addNewCourse(String subject, String crsName, String desription, int credit, int departmentCode){
+		boolean isSuccess = false;
+		
+		Hdepartment depart = getDepartmentById(departmentCode);
+		if(depart == null){
+			return false;
+		}
+		
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		
+		Hcourse course = new Hcourse();
+		course.setSubjectcode(subject);
+		course.setCoursename(crsName);
+		course.setDescription(desription);
+		course.setCredits(credit);
+		course.setHdepartment(depart);
+		course.setStatuscode(1);
+		
+		trans.begin();
+		
+		try{
+			em.persist(course);
 			trans.commit();
 			isSuccess = true;
 		}catch(Exception e){
@@ -183,6 +240,26 @@ public class CollegeDB {
 		}
 		
 		return new ArrayList<Hdepartment>(fd);
+	}
+	
+	public Hdepartment getDepartmentById(int departmentId){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		Hdepartment fd = null;
+		
+		try {
+			String sql = "select d from Hdepartment d where d.code = ?1";
+			TypedQuery<Hdepartment> q = em.createQuery(sql, Hdepartment.class);
+			q.setParameter(1, departmentId);
+			
+			fd = q.getSingleResult();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return fd;
 	}
 	
 	//******************************************

@@ -213,6 +213,24 @@ public class tryMain {
 		}else{
 			System.out.println("failed");
 		}
+		
+		//get department by department id
+		System.out.println("\nget department by department id");
+		Hdepartment d = uDB.getDepartmentById(2);
+		if(d==null){
+			System.out.println("no corresponding department");
+		}else{
+			System.out.println(d.getDepartname());
+		}
+		
+		//add new course
+		System.out.println("\nadd new course");
+		boolean addcour = uDB.addNewCourse("prg", "basic programming", "", 3, 2);
+		if(addcour){
+			System.out.println("success");
+		}else{
+			System.out.println("failed");
+		}
 	}
 
 }

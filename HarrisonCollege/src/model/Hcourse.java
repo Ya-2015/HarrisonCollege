@@ -25,7 +25,7 @@ public class Hcourse implements Serializable {
 
 	private String coursename;
 
-	private BigDecimal credits;
+	private int credits;
 
 	private String description;
 
@@ -61,11 +61,11 @@ public class Hcourse implements Serializable {
 		this.coursename = coursename;
 	}
 
-	public BigDecimal getCredits() {
+	public int getCredits() {
 		return this.credits;
 	}
 
-	public void setCredits(BigDecimal credits) {
+	public void setCredits(int credits) {
 		this.credits = credits;
 	}
 

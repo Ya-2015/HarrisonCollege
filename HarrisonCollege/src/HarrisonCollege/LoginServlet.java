@@ -60,22 +60,33 @@ public class LoginServlet extends HttpServlet {
 		{
 			session.setAttribute("netid", loggedIn.getNetid());
 				switch(loggedIn.getUsertype().intValueExact()){
-				case 1 :	session.setAttribute("usertype", "student");
+				case 1 :	
+						{
+							session.setAttribute("usertype", "student");
+						
+							session.setAttribute("usercode", 1);
 							Hstudent studentProfile= cDB.getStudentProfileByNetId(loggedIn.getNetid());
 							session.setAttribute("studentNumber",studentProfile.getStudentnum());
 							response.sendRedirect("StudentPage.jsp");
 							break;
-				case 2 : 	session.setAttribute("usertype", "instructor");
+							}
+				case 2 : 	
+							{session.setAttribute("usertype", "instructor");
+							session.setAttribute("usercode", 2);
 							Hinstructor instructorProfile= cDB.getInstructorProfileByNetId(loggedIn.getNetid());
 							session.setAttribute("instructorNumber",instructorProfile.getInstructornum());
 							response.sendRedirect("InstructorPage.jsp");
-							break;
-				case 3 :    session.setAttribute("usertype", "advisor");
+							break;}
+				case 3 :    
+							{session.setAttribute("usertype", "advisor");
+							session.setAttribute("usercode", 3);
 							response.sendRedirect("AdvisorPage.jsp");
-							break;
-				case 4 :	session.setAttribute("usertype", "admin");
+							
+							break;}
+				case 4 :	{session.setAttribute("usertype", "admin");
+							session.setAttribute("usercode", 4);
 							response.sendRedirect("AdministratorPage.jsp");
-							break;
+							break;}
 				
 				}
 		}

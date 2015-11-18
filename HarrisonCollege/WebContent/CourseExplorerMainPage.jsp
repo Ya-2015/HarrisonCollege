@@ -19,7 +19,7 @@
 <%
 	//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
-	if (uName != null)
+	if (uName == null)
 		response.sendRedirect("HomePage");
 %>
 <body>

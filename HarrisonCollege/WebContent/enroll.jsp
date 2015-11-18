@@ -15,14 +15,14 @@
 <%
 	//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
-	if (uName != null)
-		response.sendRedirect("HomePage");
+	if (uName == null)
+		response.sendRedirect("Login.jsp");
 %>
 <body>
 	<jsp:include page="/Navbar.jsp" />
 
 	<c:choose>
-		<c:when test="${sessionScope.usertype.equals("advisor")}">
+		<c:when test="${sessionScope.usercode==3}">
 			<div class="panel panel-default">
 
 				<div class="panel-body">
@@ -40,7 +40,7 @@
 				</div>
 			</div>
 		</c:when>
-		<c:when test="${sessionScope.usertype.equals("student")}">
+		<c:when test="${sessionScope.usercode==1}">
 			<div class="panel panel-default">
 
 				<div class="panel-body">
@@ -62,6 +62,7 @@
 
 			<jsp:include page="/Footer.jsp" />
 		</c:when>
+		
 	</c:choose>
 </body>
 </html>

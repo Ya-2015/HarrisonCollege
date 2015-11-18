@@ -150,6 +150,13 @@ public class tryMain {
 		}else{
 			System.out.println("failed");
 		}
+		
+		//get class by subject by semester
+		System.out.println("\nGet class by subject by semester");
+		ArrayList<Hclass> cls1 = uDB.getClassBySubjectBySemester("ds", 1);
+		for (Hclass c : cls1){
+			System.out.println(c.getHcourse().getSubjectcode()+" " + c.getHsemester().getSemestercode()+" "+c.getHsemester().getHyear());
+		}
 	}
 
 }

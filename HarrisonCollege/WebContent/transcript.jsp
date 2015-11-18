@@ -50,11 +50,11 @@
 <div class="panel panel-default">
 
   <div class="panel-body">
-  <h4>StudentNumber: ${# }
-					<br> <small>Name: ${ #}</small><br>
-					<br> <small>Year of Entry: ${# }</small><br>\
-					<br> <small>Department: ${# }</small><br>
-					<br> <small>Major: ${# }</small><br>
+   <h4>StudentNumber: ${studentInfo.studentnum}
+					<br> <small>Name: ${studentInfo.studentname}</small><br>
+					<br> <small>Year of Entry: ${studentInfo.yearofentry }</small><br>
+					<br> <small>Department: ${studentInfo.hmajor.hdepartment.departname }</small><br>
+					<br> <small>Major: ${studentInfo.hmajor.majorname }</small><br>
 				</h4>
   
 		<table class="table table-striped">
@@ -71,14 +71,14 @@
 			</tr>
 </thead>
 <tbody>
-<c:forEach var="p" items="${MyshoppingCart}">
+<c:forEach var="t" items="${TheStudentTranscript}">
              <tr>
-			    <td>${p.#}</td>
-				<td>${p.#}</td>
-				<td>${p.#}</td>
-			    <td>${p.#}</td>
-			    <td>${p.#}</td>
-			    <td>${p.#}</td>
+			    <td>${t.hclass.hcourse.subjectcode}</td>
+				<td>${t.hstudent.studentname}</td>
+				<td>${t.hclass.hcourse.credits}</td>
+			    <td>${t.grade}</td>
+			    <td>${t.hclass.hsemester.semester}</td>
+			    <td>${t.hclass.hsemester.hyear}</td>
 			</tr>
 			
 </c:forEach>
@@ -87,10 +87,9 @@
 </tbody>
 		</table>
 		
-<label>Overall GPA:</label><c:out value="${GrandTotal}" />
-<br>
 
-  <a href = "#" class="btn btn-info">Back</a>
+
+  <a href = "AdvisorPage.jsp" class="btn btn-info">Go Back</a>
 
   	
   </div>

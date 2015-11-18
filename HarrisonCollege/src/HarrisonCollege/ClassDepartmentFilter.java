@@ -51,7 +51,7 @@ public class ClassDepartmentFilter extends HttpServlet {
 		CollegeDB uDB = new CollegeDB();
 		PrintWriter out = response.getWriter();
 		int j = 0;
-		double avgRating = 0;
+		
 		HttpSession session = request.getSession();
 		String departmentDropdown = "";
 		ArrayList<Hdepartment> depar = uDB.getAllDepartments();
@@ -95,28 +95,49 @@ public class ClassDepartmentFilter extends HttpServlet {
 		ArrayList<Hclass> data = uDB.getClassByDepartmentBySemester(Integer.parseInt(request.getParameter("departmentID")),1);
 		for (Hclass dataset : data) {
 			if (dataset.getHschedule().getDow2() == null) {
-				classTable = classTable + "<div> <tr><td>"
-						+ dataset.getClassnum() + "</td><td>"
+				classTable = classTable
+						+ "<div> <tr><td>"
+						+ dataset.getClassnum()
+						+ "</td><td>"
 						+ dataset.getHcourse().getHdepartment().getDepartname()
-						+ "</td><td>" + dataset.getHcourse().getSubjectcode()
-						+ "</td><td>" + dataset.getHcourse().getDescription()
+						+ "</td><td>"
+						+ dataset.getHcourse().getSubjectcode()
+						+ "</td><td>"
+						+ dataset.getHcourse().getDescription()
 						+ "</td><td>"
 						+ dataset.getHinstructor().getInstructorname()
-						+ "</td><td>" + dataset.getHschedule().getDow1()
-						+ "</td><td>" + dataset.getHschedule().getHour12()
+						+ "</td><td>"
+						+ dataset.getHschedule().getDow1()
+						+ "</td><td>"
+						+ dataset.getHschedule().getHour12()
+						+ "</td><td>"
+						+ "<a href=\"enroll.jsp?Enrolledclass="
+						+ dataset.getClassnum()
+						+ "\" class=\"btn btn-info\" role=\"button\">Add Class</a>"
 						+ "</td></tr>" + "</div>";
 			} else {
-				classTable = classTable + "<div> <tr><td>"
-						+ dataset.getClassnum() + "</td><td>"
+				classTable = classTable
+						+ "<div> <tr><td>"
+						+ dataset.getClassnum()
+						+ "</td><td>"
 						+ dataset.getHcourse().getHdepartment().getDepartname()
-						+ "</td><td>" + dataset.getHcourse().getSubjectcode()
-						+ "</td><td>" + dataset.getHcourse().getDescription()
+						+ "</td><td>"
+						+ dataset.getHcourse().getSubjectcode()
+						+ "</td><td>"
+						+ dataset.getHcourse().getDescription()
 						+ "</td><td>"
 						+ dataset.getHinstructor().getInstructorname()
-						+ "</td><td>" + dataset.getHschedule().getDow1() + " "
-						+ dataset.getHschedule().getDow2()  +"</td><td>"
-						+ dataset.getHschedule().getHour12() + "</td></tr>"
-						+ "</div>";
+						+ "</td><td>"
+						+ dataset.getHschedule().getDow1()
+						+ " "
+						+ dataset.getHschedule().getDow2()
+						+ "</td><td>"
+						+ dataset.getHschedule().getHour12()
+						+ "</td><td>"
+						+ "<a href=\"enroll.jsp?Enrolledclass="
+						+ dataset.getClassnum()
+						+ "\" class=\"btn btn-info\" role=\"button\">Add Class</a>"
+						+ "</td></tr>" + "</div>";
 			}
 		}
 

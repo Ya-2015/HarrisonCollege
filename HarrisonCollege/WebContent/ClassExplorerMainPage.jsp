@@ -17,10 +17,12 @@
 	integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
 	crossorigin="anonymous">
 </head>
-<%//HttpSession session = request.getSession();
+<%
+	//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
 	if (uName == null)
-	response.sendRedirect("Login.jsp"); %>
+		response.sendRedirect("Login.jsp");
+%>
 <body>
 	<jsp:include page="/Navbar.jsp" />
 	<div class="container" style="background-color: white">
@@ -88,7 +90,8 @@
 				</tr>
 				${classTable}
 			</table>
-
+			<a href="UserClassRedirectorServlet" class="btn btn-info"
+				role="button">Back To Home</a>
 		</div>
 	</div>
 	<jsp:include page="/Footer.jsp" />

@@ -12,34 +12,28 @@
 	integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
 	crossorigin="anonymous">
 </head>
-<%//HttpSession session = request.getSession();
+<%
+	//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
 	if (uName == null)
-	response.sendRedirect("Login.jsp"); %>
+		response.sendRedirect("Login.jsp");
+%>
 <body>
 	<jsp:include page="/Navbar.jsp" />
 	<div class="container">
-		<h2 style="color: white">Welcome Advisor</h2>
+		<h2 style="color: white">Welcome Student</h2>
 		<div class="panel-group">
 			<div class="panel panel-info">
-				<div class="panel-heading">Student Course Manager</div>
-				<div class="panel-body">
-					<a href="">Add Students to Courses</a><br>
-					<a href="">Drop Students From Courses</a><br>					
-					<a href="">Go To Course Explorer</a><br>
-				</div>
+				<div class="panel-heading">Select a Department to view Majors</div>
+				<div class="panel-body">${departmentDropdown}</div>
 			</div>
-			<div class="panel panel-info">
-				<div class="panel-heading">Transcript Manager</div>
-				<div class="panel-body">
-					<a href="AdvisorListAllStudents">View Unofficial Student Transcript</a><br>					
-				</div>
-			</div>
-			
-
 		</div>
+		<a href="UserClassRedirectorServlet" class="btn btn-info"
+			role="button">Back To Home</a>
 	</div>
 	<jsp:include page="/Footer.jsp" />
+
+
 
 </body>
 </html>

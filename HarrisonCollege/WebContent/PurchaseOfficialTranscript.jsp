@@ -21,6 +21,7 @@
 <body>
 	<jsp:include page="/Navbar.jsp" />
 	<div class="container">
+	<h3>Cost of Official Transcript - $5</h3>
 		<form action="PurchasingServlet" method="POST">
 
 			<div class="panel-group">
@@ -92,10 +93,10 @@
 				</div>
 			</div>
 
-			<button class="btn btn-primary btn-sm">Submit</button>
+			<button type="button" class="btn btn-primary">Submit</button><br><br>
 		</form>
-
-		<br> <br>
+		<a href="UserClassRedirectorServlet" class="btn btn-info"
+			role="button">Back To Home</a> <br> <br>
 	</div>
 	<jsp:include page="/Footer.jsp" />
 

@@ -51,9 +51,6 @@ public class ClassExplorerMainServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		CollegeDB uDB = new CollegeDB();
-		PrintWriter out = response.getWriter();
-		int j = 0;
-		double avgRating = 0;
 		HttpSession session = request.getSession();
 		String departmentDropdown = "";
 		ArrayList<Hdepartment> depar = uDB.getAllDepartments();

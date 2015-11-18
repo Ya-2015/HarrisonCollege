@@ -67,6 +67,8 @@
 					${courseTable}
 				</table>
 			</form>
+			<a href="UserClassRedirectorServlet" class="btn btn-info"
+				role="button">Back To Home</a>
 		</div>
 	</div>
 	<jsp:include page="/Footer.jsp" />

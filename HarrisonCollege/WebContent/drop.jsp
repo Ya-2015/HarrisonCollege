@@ -12,38 +12,39 @@
 	integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
 	crossorigin="anonymous">
 </head>
-<%//HttpSession session = request.getSession();
+<%
+	//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
 	if (uName == null)
-	response.sendRedirect("Login.jsp"); %>
+		response.sendRedirect("Login.jsp");
+%>
 <body>
 	<jsp:include page="/Navbar.jsp" />
 
 
 
 
-<div class="panel panel-default">
+	<div class="panel panel-default">
 
-  <div class="panel-body">
-  <form action="dropDelete" method="post">
- 
-  <h1>Want to drop classes? Please provide your student number</h1>
-  <br>
-  <br>
-  <label>Student Number:</label> <input type = "text" size=20 value = "" name ="studentNumber", placeholder="Your student number">
-  <br>
-  <br>
-  <button type="submit" class="btn btn-info">Submit</button>		
-  </form>
-  	
-  </div>
-  </div>
- 
+		<div class="panel-body">
+			<form action="dropDelete" method="post">
 
-	
+				<h1>Want to drop classes? Please provide your student number</h1>
+				<br> <br> <label>Student Number:</label> <input
+					type="text" size=20 value="" name="studentNumber"
+					, placeholder="Your student number"> <br> <br>
+				<button type="submit" class="btn btn-info">Submit</button>
+			</form>
+			<a href="UserClassRedirectorServlet" class="btn btn-info"
+				role="button">Back To Home</a>
+		</div>
+	</div>
+
+
+
 	<jsp:include page="/Footer.jsp" />
 
-	
+
 
 </body>
 </html>

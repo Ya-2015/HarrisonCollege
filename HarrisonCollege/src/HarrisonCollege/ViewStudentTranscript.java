@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Henrollment;
 import model.Hstudent;
@@ -39,8 +40,31 @@ public class ViewStudentTranscript extends HttpServlet {
 	
    protected void processViewStudentTranscript(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	CollegeDB  db= new CollegeDB();
-	String strstudentnum = request.getParameter("studentNUM");
-	  int StudentNum =Integer.parseInt(strstudentnum);
+	int StudentNum =0;
+	HttpSession session = request.getSession();
+	if((Integer) session.getAttribute("usercode")==3)
+	{
+		String strstudentnum = request.getParameter("studentNUM");
+	 StudentNum =Integer.parseInt(strstudentnum);
+	}
+	else if ((Integer) session.getAttribute("usercode")==1)
+	{
+			
+		   StudentNum =(Integer) session.getAttribute("studentNumber");
+	}
+	else
+	{
+		try {
+			getServletContext().getRequestDispatcher("UserClassRedirectorServlet").forward(request, response);
+		} catch (ServletException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+		
 	Hstudent stu = db.getStudentProfileByStuNum(StudentNum);
 	ArrayList<Henrollment> aStudentTranscript=db.getTranscriptByStudentNum(StudentNum);
 	

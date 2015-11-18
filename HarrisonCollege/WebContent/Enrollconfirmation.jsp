@@ -12,35 +12,43 @@
 	integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
 	crossorigin="anonymous">
 </head>
-<%//HttpSession session = request.getSession();
+<%
+	//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
 	if (uName == null)
-	response.sendRedirect("Login.jsp"); %>
+		response.sendRedirect("Login.jsp");
+%>
 <body>
- <div class="container">
+	<div class="container">
 
- <c:if test="${EnrollFlag==true}">
-  <h4>StudentNumber: ${studentInfo.studentnum }
-					<br> <small>Name: ${ studentInfo.studentname}</small><br>
-					
-				</h4>
-  
-      <div class="starter-template">
-        <h1>Congratulation! You have enrolled successfully.</h1>
-        
-        
-       <label>Enrolled Class:</label>
-         <p>${Enrolledclass.crn} ${Enrolledclass.hschedule.dow1} ${Enrolledclass.hschedule.dow2}  ${Enrolledclass.hschedule.hour12}:${Enrolledclass.hschedule.minutes60}${Enrolledclass.hschedule.ampm} 
-         
-          ${Enrolledclass.hinstructor.instructorname}  ${Enrolledclass.hclassroom.bldgname} ${Enrolledclass.hclassroom.roomnumber}</p>
-       
-      </div>
-      </c:if>
-<c:if test="${EnrollFlag==false}">      
-<p>Failed</p>
-</c:if>
+		<c:if test="${EnrollFlag==true}">
+			<h4>
+				StudentNumber: ${studentInfo.studentnum } <br> <small>Name:
+					${ studentInfo.studentname}</small><br>
 
-      </div>
+			</h4>
+
+			<div class="starter-template">
+				<h1>Congratulation! You have enrolled successfully.</h1>
+
+
+				<label>Enrolled Class:</label>
+				<p>${Enrolledclass.crn}${Enrolledclass.hschedule.dow1}
+					${Enrolledclass.hschedule.dow2}
+					${Enrolledclass.hschedule.hour12}:${Enrolledclass.hschedule.minutes60}${Enrolledclass.hschedule.ampm}
+
+					${Enrolledclass.hinstructor.instructorname}
+					${Enrolledclass.hclassroom.bldgname}
+					${Enrolledclass.hclassroom.roomnumber}</p>
+
+			</div>
+		</c:if>
+		<c:if test="${EnrollFlag==false}">
+			<p>Failed</p>
+		</c:if>
+		<a href="UserClassRedirectorServlet" class="btn btn-info"
+			role="button">Back To Home</a>
+	</div>
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -49,7 +57,7 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
 		integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
 		crossorigin="anonymous"></script>
-   
+
 
 </body>
 </html>

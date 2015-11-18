@@ -50,45 +50,43 @@ public class EnrollClassServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		CollegeDB uDB = new CollegeDB();
-		PrintWriter out = response.getWriter();
-		int j = 0;
-		double avgRating = 0;
 		HttpSession session = request.getSession();
 		String departmentDropdown = "";
 		ArrayList<Hdepartment> depar = uDB.getAllDepartments();
 		for (Hdepartment d : depar) {
 			departmentDropdown = departmentDropdown
-					+ "<li><input type=\"checkbox\" name=\"departmentid\" id=\"departmentid\" value="
-					+ d.getCode() + "><label for=\"departmentid\">"
-					+ d.getDepartname() + "</label></li>";
+					+ "<li><a href = \"ClassDepartmentFilter?departmentID="
+					+ d.getCode() + "\">"
+					+ d.getDepartname() + "</a></li>";
 		}
 
 		String instructorDropdown = "";
 		ArrayList<Hinstructor> ins = uDB.getAllInstructors();
 		for (Hinstructor i : ins) {
 			instructorDropdown = instructorDropdown
-					+ "<li><input type=\"checkbox\" name=\"departmentid\" id=\"departmentid\" value="
-					+ i.getNetid() + "><label for=\"departmentid\">"
-					+ i.getInstructorname() + "</label></li>";
+					+ "<li><a href = \"ClassInstructorFilter?instructorID="
+					+ i.getInstructornum() + "\">"
+					+i.getInstructorname() + "</a></li>";
 		}
 
 		String subjectDropdown = "";
 		ArrayList<String> subject = uDB.getAllUniqueSubjests();
 		for (String sub : subject) {
 			subjectDropdown = subjectDropdown
-					+ "<li><input type=\"checkbox\" name=\"departmentid\" id=\"departmentid\" value="
-					+ sub + "><label for=\"departmentid\">" + sub
-					+ "</label></li>";
+					+ "<li><a href = \"ClassSubjectFilter?subjectID="
+					+sub + "\">"
+					+sub + "</a></li>";
 		}
 
 		String timeDropdown = "";
 		ArrayList<Hschedule> sch = uDB.getAllSchedule();
 		for (Hschedule s : sch) {
 			timeDropdown = timeDropdown
-					+ "<li><input type=\"checkbox\" name=\"departmentid\" id=\"departmentid\" value="
-					+ s.getHour12() + "><label for=\"departmentid\">"
-					+ s.getHour12() + "</label></li>";
+					+ "<li><a href = \"ClassTimeFilter?timeID="
+					+ s.getHour12() + "\">"
+					+ s.getHour12()+ "</a></li>";
 		}
+		
 		String classTable = "";
 		ArrayList<Hclass> data = uDB.getAllClasses();
 		for (Hclass dataset : data) {

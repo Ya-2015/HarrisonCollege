@@ -15,7 +15,7 @@
 <%//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
 	if (uName == null)
-	response.sendRedirect("HomePage"); %>
+	response.sendRedirect("Login.jsp"); %>
 <body>
 	<jsp:include page="/Navbar.jsp" />
 	<div class="container">
@@ -25,16 +25,17 @@
 				<div class="panel-heading">Course Manager</div>
 				<div class="panel-body">
 					<a href="EnrollClassServlet">Add Courses</a><br>
-					<a href="">Drop Courses</a><br>
-					<a href="">Current Schedule</a><br>
+					<a href="drop.jsp">Drop Courses</a><br>
+					<a href="StudentScheduleServlet">Current Schedule</a><br>
 					<a href="CourseExplorerMainServlet">Go To Course Explorer</a><br>
+					<a href="MajorExplorerServlet">Major Explorer</a><br>
 				</div>
 			</div>
 			<div class="panel panel-info">
 				<div class="panel-heading">Transcript Manager</div>
 				<div class="panel-body">
-					<a href="">View Unofficial Transcript</a><br>
-					 <a href="">Buy Official Transcript</a><br>
+					<a href="ViewStudentTranscript">View Unofficial Transcript</a><br>
+					 <a href="PurchaseOfficialTranscript.jsp">Buy Official Transcript</a><br>
 				</div>
 			</div>
 		</div>

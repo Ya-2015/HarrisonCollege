@@ -29,7 +29,7 @@
       </div>
        
 
-<a href="AdministratorPage.jsp">Go Back</a>
+<a href="UserClassRedirectorServlet" class="btn btn-info" role="button">Back To Home</a>
       
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script

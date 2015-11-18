@@ -12,34 +12,38 @@
 	integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
 	crossorigin="anonymous">
 </head>
-<%//HttpSession session = request.getSession();
+<%
+	//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
 	if (uName == null)
-	response.sendRedirect("Login.jsp"); %>
+		response.sendRedirect("Login.jsp");
+%>
 <body>
 	<jsp:include page="/Navbar.jsp" />
 	<div class="container">
-		<h2 style="color: white">Welcome Advisor</h2>
+		<h2 style="color: white">Welcome Instructor San</h2>
 		<div class="panel-group">
 			<div class="panel panel-info">
-				<div class="panel-heading">Student Course Manager</div>
+				<div class="panel-heading">Your Classes</div>
 				<div class="panel-body">
-					<a href="">Add Students to Courses</a><br>
-					<a href="">Drop Students From Courses</a><br>					
-					<a href="">Go To Course Explorer</a><br>
+					<table class="table table-striped">
+						<tr>
+							<th>Building</th>
+							<th>Room Number</th>
+							<th>Course</th>
+							<th>Days</th>
+							<th>Time</th> 
+							</tr>
+							${scheduleDropdown}
+					</table>
 				</div>
 			</div>
-			<div class="panel panel-info">
-				<div class="panel-heading">Transcript Manager</div>
-				<div class="panel-body">
-					<a href="AdvisorListAllStudents">View Unofficial Student Transcript</a><br>					
-				</div>
-			</div>
-			
-
 		</div>
+		<a href="UserClassRedirectorServlet" class="btn btn-info" role="button">Back To Home</a>
 	</div>
 	<jsp:include page="/Footer.jsp" />
+
+
 
 </body>
 </html>

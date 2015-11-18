@@ -94,5 +94,6 @@
 		</c:when>
 		
 	</c:choose>
+	<a href="UserClassRedirectorServlet" class="btn btn-info" role="button">Back To Home</a>
 </body>
 </html>

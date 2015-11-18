@@ -14,8 +14,8 @@
 </head>
 <%//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
-	if (uName != null)
-	response.sendRedirect("HomePage"); %>
+	if (uName == null)
+	response.sendRedirect("Login.jsp"); %>
 <body>
 <div class="container">
 <nav class="navbar navbar-default">

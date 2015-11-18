@@ -125,6 +125,22 @@ public class tryMain {
 		for(Huser u: allU){
 			System.out.println(u.getNetid()+" " + u.getUsertype());
 		}
+		
+		//get user profile by netid
+		System.out.println("\nUser Profile by NetId");
+		Huser uu = uDB.getUserProfile("yaliu001");
+		if(uu!=null){
+			System.out.println(uu.getNetid()+" " + uu.getUsertype());
+		}
+		
+		//update user type
+		System.out.println("\nUpdate User Type");
+		boolean updateType = uDB.updateUserType("yaliu001", 1);
+		if(updateType){
+			System.out.println("updated");
+		}else{
+			System.out.println("failed");
+		}
 	}
 
 }

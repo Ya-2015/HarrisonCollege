@@ -133,6 +133,26 @@ public class CollegeDB {
 		return new ArrayList<Hinstructor>(fd);
 	}
 	
+	public Hinstructor getInstructorProfileByNetId(String netid) {
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		Hinstructor fd = null;
+		
+		try {
+			String sql = "select s from Hinstructor s where s.netid = ?1";
+			TypedQuery<Hinstructor> q = em.createQuery(sql, Hinstructor.class);
+			q.setParameter(1, netid);
+			
+			fd = q.getSingleResult();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return fd;
+	}
+	
 	//******************************************
 	//Schedule Related**************************
 	//******************************************
@@ -197,6 +217,26 @@ public class CollegeDB {
 		return fd;
 	}
 	
+	
+	public Hstudent getStudentProfileByNetId(String netId){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		Hstudent fd = null;
+		
+		try {
+			String sql = "select s from Hstudent s where s.netid = ?1";
+			TypedQuery<Hstudent> q = em.createQuery(sql, Hstudent.class);
+			q.setParameter(1, netId);
+			
+			fd = q.getSingleResult();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return fd;
+	}
 	//******************************************
 	//Class Related*****************************
 	//******************************************
@@ -399,6 +439,68 @@ public class CollegeDB {
 		return fd;
 	}
 
+	public Huser getUserProfile(String username){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		Huser fd = null;
+		
+		try {
+			String sql = "select u from Huser u where u.netid = ?1";
+			TypedQuery<Huser> q = em.createQuery(sql, Huser.class);
+			q.setParameter(1, username);
+			
+			fd = q.getSingleResult();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return fd;
+	}
+	
+	public boolean updateUserType(String username, int type){
+		boolean isSuccess = false;
+		Huser user = null;
+		
+		//check user
+		user = getUserProfile(username);
+		if(user==null){
+			return false;
+		}
+		
+		//check type
+		if(type<1 || type>4){
+			return false;
+		}
+		
+		//
+		if(user.getUsertype() == type){
+			isSuccess = true;
+		}else{
+			//update type
+			user.setUsertype(type);
+			
+			EntityManager em = DBUtil.getEmFactory().createEntityManager();
+			EntityTransaction trans = em.getTransaction();
+			
+			trans.begin();
+			try{
+				em.merge(user);
+				trans.commit();
+				isSuccess = true;
+			}catch(Exception e){
+				System.out.println(e);
+				trans.rollback();
+				isSuccess = false;
+			}finally{
+				em.close();
+			}
+		}
+		
+		return isSuccess;
+	}
+	
 	public ArrayList<Huser> getAllUsers(){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		List<Huser> fd = null;
@@ -418,43 +520,7 @@ public class CollegeDB {
 		return new ArrayList<Huser>(fd);
 	}
 	
-	public Hinstructor getInstructorProfileByNetId(String netid) {
-		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		Hinstructor fd = null;
-		
-		try {
-			String sql = "select s from Hinstructor s where s.netid = ?1";
-			TypedQuery<Hinstructor> q = em.createQuery(sql, Hinstructor.class);
-			q.setParameter(1, netid);
-			
-			fd = q.getSingleResult();
-			
-		} catch (Exception e){
-			System.out.println(e);
-		} finally {
-			em.close();
-		}
-		
-		return fd;
-	}
+
 	
-	public Hstudent getStudentProfileByNetId(String netId){
-		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		Hstudent fd = null;
-		
-		try {
-			String sql = "select s from Hstudent s where s.netid = ?1";
-			TypedQuery<Hstudent> q = em.createQuery(sql, Hstudent.class);
-			q.setParameter(1, netId);
-			
-			fd = q.getSingleResult();
-			
-		} catch (Exception e){
-			System.out.println(e);
-		} finally {
-			em.close();
-		}
-		
-		return fd;
-	}
+
 }

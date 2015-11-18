@@ -22,7 +22,7 @@ public class Huser implements Serializable {
 
 	private String userpwd;
 
-	private BigDecimal usertype;
+	private int usertype;
 
 	public Huser() {
 	}
@@ -43,11 +43,11 @@ public class Huser implements Serializable {
 		this.userpwd = userpwd;
 	}
 
-	public BigDecimal getUsertype() {
+	public int getUsertype() {
 		return this.usertype;
 	}
 
-	public void setUsertype(BigDecimal usertype) {
+	public void setUsertype(int usertype) {
 		this.usertype = usertype;
 	}
 

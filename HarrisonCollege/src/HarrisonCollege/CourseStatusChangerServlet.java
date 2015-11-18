@@ -16,24 +16,21 @@ import model.Hinstructor;
 import HarrisonCollegeDB.CollegeDB;
 
 /**
- * Servlet implementation class departmentFilter
+ * Servlet implementation class CourseStatusChangerServlet
  */
-@WebServlet("/departmentFilter")
-public class departmentFilter extends HttpServlet {
+@WebServlet("/CourseStatusChangerServlet")
+public class CourseStatusChangerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public departmentFilter() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-    protected void doGet(HttpServletRequest request,
+	public CourseStatusChangerServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
@@ -50,52 +47,57 @@ public class departmentFilter extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		int j = 0;
 		double avgRating = 0;
-		
-		
+
 		String departmentDropdown = "";
 		ArrayList<Hdepartment> depar = uDB.getAllDepartments();
 		for (Hdepartment d : depar) {
 			departmentDropdown = departmentDropdown
 					+ "<li><a href = \"departmentFilter?departmentID="
-					+ d.getCode() + "\">"
-					+ d.getDepartname() + "</a></li>";
+					+ d.getCode() + "\">" + d.getDepartname() + "</a></li>";
 		}
 
-		
 		String instructorDropdown = "";
 		ArrayList<Hinstructor> ins = uDB.getAllInstructors();
 		for (Hinstructor i : ins) {
 			instructorDropdown = instructorDropdown
 					+ "<li><a href = \"instructorFilter?instructorID="
-					+ i.getNetid() + "\">"
-					+i.getInstructorname() + "</a></li>";
+					+ i.getNetid() + "\">" + i.getInstructorname()
+					+ "</a></li>";
 		}
-		
+
 		String subjectDropdown = "";
 		ArrayList<String> subject = uDB.getAllUniqueSubjests();
 		for (String sub : subject) {
 			subjectDropdown = subjectDropdown
-					+ "<li><a href = \"subjectFilter?subjectID="
-					+sub + "\">"
-					+sub + "</a></li>";
+					+ "<li><a href = \"subjectFilter?subjectID=" + sub + "\">"
+					+ sub + "</a></li>";
 		}
-	
-		
+
 		String courseTable = "";
-		ArrayList<Hcourse> data =uDB.getAllCourses();
-		for (Hcourse dataset : data){
-		courseTable = courseTable + "<div> <tr><td>" + dataset.getHdepartment().getDepartname()
-				+ "</td><td>" + dataset.getSubjectcode()+ "</td><td>"
-				+ dataset.getDescription() + "</td><td>"
-				+ dataset.getCredits() + "</td></tr>" + "</div>";
+		ArrayList<Hcourse> data = uDB.getAllCourses();
+		for (Hcourse dataset : data) {
+			courseTable = courseTable
+					+ "<div> <tr><td>"
+					+ dataset.getHdepartment().getDepartname()
+					+ "</td><td>"
+					+ dataset.getSubjectcode()
+					+ "</td><td>"
+					+ dataset.getDescription()
+					+ "</td><td>"
+					+ dataset.getCredits()
+					+ "</td><td>"
+					+ "<a href=\"ChangeStatusCourses.jsp?Enrolledclass="
+					+ dataset.getCoursecode()
+					+ "\" class=\"btn btn-info\" role=\"button\">Change Status</a>"
+					+ "</td></tr>" + "</div>";
 		}
 
 		request.setAttribute("departmentDropdown", departmentDropdown);
 		request.setAttribute("instructorDropdown", instructorDropdown);
 		request.setAttribute("subjectDropdown", subjectDropdown);
 		request.setAttribute("courseTable", courseTable);
-		
-		getServletContext().getRequestDispatcher("/CourseExplorerMainPage.jsp").forward(
-				request, response);
+
+		getServletContext().getRequestDispatcher("/CourseExplorerMainPage.jsp")
+				.forward(request, response);
 	}
 }

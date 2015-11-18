@@ -30,7 +30,7 @@
 				<div class="panel-body">
 					<a href="">Create Courses</a><br>
 					 <a href="">Update Courses</a><br>
-					  <a href="">List Courses</a><br>
+					  <a href="CourseExplorerMainServlet">List Courses</a><br>
 					   <a href="">Disable Courses</a><br>
 				</div>
 			</div>
@@ -52,7 +52,10 @@
 					<a href="">Update Classrooms</a><br>
 					<a href="">List Classrooms</a><br>
 					<a href="">Disable Classrooms</a><br>
-					<a href="">Classroom Explorer</a><br>
+					<a href="">View Classrooms used by course</a><br>
+					<a href="">View Classrooms used by instructor</a><br>
+					<a href="">View Classrooms used by student</a><br>
+					
 				</div>
 			</div>
 

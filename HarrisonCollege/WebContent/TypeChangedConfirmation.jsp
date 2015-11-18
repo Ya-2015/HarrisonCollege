@@ -20,16 +20,16 @@
  <div class="container">
 
       <div class="starter-template">
-        <c:if test="${Dropflag==true}">
-         <p>Congratulation! You have dropped successfully.</p>
+        <c:if test="${ChangeTypeflag==true}">
+         <p>Congratulation! You have changed type successfully.</p>
              </c:if>
-             <c:if test="${Dropflag==false}">
-             <p>Failed</p>
+             <c:if test="${ChangeTypeflag==false}">
+            <p>Failed</p>
              </c:if>
       </div>
        
 
-
+<a href="AdministratorPage.jsp">Go Back</a>
       
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script

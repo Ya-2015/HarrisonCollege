@@ -498,6 +498,26 @@ public class CollegeDB {
 		return fd;
 	}
 	
+	public ArrayList<Henrollment> getTranscriptByStudentNum(int stuNum){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Henrollment> fd = null;
+		
+		try {
+			String sql = "select e from Henrollment e where e.hstudent.studentnum = ?1";
+			TypedQuery<Henrollment> q = em.createQuery(sql, Henrollment.class);
+			q.setParameter(1, stuNum);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Henrollment>(fd);
+	}
+	
 	//******************************************
 	//User Profile Related**********************
 	//******************************************

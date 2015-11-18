@@ -178,6 +178,13 @@ public class tryMain {
 		for (Hcourse c : crs){
 			System.out.println(c.getSubjectcode()+" "+c.getCoursename());
 		}
+		
+		//view transcript
+		System.out.println("\nview student transcript");
+		ArrayList<Henrollment> enr = uDB.getTranscriptByStudentNum(3);
+		for (Henrollment c : enr){
+			System.out.println(c.getGrade()+" "+c.getHclass().getHcourse().getCoursename());
+		}
 	}
 
 }

@@ -459,6 +459,39 @@ public class CollegeDB {
 		return fd;
 	}
 	
+	public boolean signUpNewUser(String netid, String pwd){
+		boolean isSuccess = false;
+		
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		
+		Huser user = null;
+		user = getUserProfile(netid);
+		if(user != null){
+			return false;
+		}
+		
+		user = new Huser();
+		user.setNetid(netid);
+		user.setUserpwd(pwd);
+		user.setUsertype(1);
+		
+		trans.begin();
+		
+		try{
+			em.persist(user);
+			trans.commit();
+			isSuccess = true;
+		}catch(Exception e){
+			System.out.println(e);
+			trans.rollback();
+		}finally{
+			em.close();
+		}
+		
+		return isSuccess;
+	}
+	
 	public boolean updateUserType(String username, int type){
 		boolean isSuccess = false;
 		Huser user = null;

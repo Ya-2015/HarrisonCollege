@@ -141,6 +141,15 @@ public class tryMain {
 		}else{
 			System.out.println("failed");
 		}
+		
+		//sign up new user
+		System.out.println("\nSignup new user");
+		boolean useruser = uDB.signUpNewUser("yaliu002", "111");
+		if(useruser){
+			System.out.println("Success");
+		}else{
+			System.out.println("failed");
+		}
 	}
 
 }

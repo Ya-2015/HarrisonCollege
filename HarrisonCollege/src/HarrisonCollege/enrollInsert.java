@@ -36,7 +36,7 @@ public class enrollInsert extends HttpServlet {
 		processenrollInsert(request,response);
 	}
 
-	private void processenrollInsert(HttpServletRequest request, HttpServletResponse response){
+	private void processenrollInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		CollegeDB  db= new CollegeDB();
 		String strstudentnum = request.getParameter("studentNumber");
 	    int  classnum =3;
@@ -46,22 +46,18 @@ public class enrollInsert extends HttpServlet {
 
 		Hstudent stu = db.getStudentProfileByStuNum(studentNum);
 		Hclass enrollClass=db.getClassById(classnum);
-		if (stu!=null){
-			db.enrollClass(classnum, studentNum); //3=CLASSNUM NEED TO PASS
+		boolean enrollFlag=db.enrollClass(classnum, studentNum); 
+		request.setAttribute("enrollFlag",enrollFlag);
+		if (enrollFlag==true){
+			
 			request.setAttribute("studentInfo",stu);
 			request.setAttribute("Enrolledclass", enrollClass);
-		
-		try {
 			getServletContext().getRequestDispatcher("/Enrollconfirmation.jsp").forward(request, response);
-		} catch (ServletException e) {
-			
-			e.printStackTrace();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
+		
+		
 		}else{
-			System.out.println("Student not exit");
+		
+			getServletContext().getRequestDispatcher("/Enrollconfirmation.jsp").forward(request, response);
 		}
 		
 	}

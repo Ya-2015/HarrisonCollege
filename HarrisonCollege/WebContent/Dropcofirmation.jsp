@@ -20,9 +20,15 @@
  <div class="container">
 
       <div class="starter-template">
-        <h1>Congratulation! You have dropped successfully.</h1>
-       <label>Dropped Class:</label><c:out value="${FinalPay}" />
+        <c:if test="${Dropflag==true}">
+         <p>Congratulation! You have dropped successfully.</p>
+             </c:if>
+             <c:if test="${Dropflag==false}">
+             </c:if>
       </div>
+       
+
+
       
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script

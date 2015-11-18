@@ -18,6 +18,8 @@
 </head>
 <body>
  <div class="container">
+ 
+ <c:if test="${Enrollflag==true}">
   <h4>StudentNumber: ${studentInfo.studentnum }
 					<br> <small>Name: ${ studentInfo.studentname}</small><br>
 					
@@ -33,6 +35,10 @@
           ${Enrolledclass.hinstructor.instructorname}  ${Enrolledclass.hclassroom.bldgname} ${Enrolledclass.hclassroom.roomnumber}</p>
        
       </div>
+      </c:if>
+<c:if test="${Enrollflag==false}">      
+<p>Failed</p>
+</c:if>
 
       </div>
 

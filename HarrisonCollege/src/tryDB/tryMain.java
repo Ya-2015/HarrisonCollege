@@ -8,6 +8,7 @@ import model.Hcourse;
 import model.Hdepartment;
 import model.Henrollment;
 import model.Hinstructor;
+import model.Hmajor;
 import model.Hschedule;
 import model.Hstudent;
 import model.Huser;
@@ -191,6 +192,13 @@ public class tryMain {
 		ArrayList<Hclass> cls4 = uDB.getClassByDepartmentBySemester(3, 1);
 		for (Hclass c : cls4){
 			System.out.println(c.getHcourse().getHdepartment().getDepartname()+c.getHcourse().getSubjectcode()+" " + c.getHsemester().getSemestercode()+" "+c.getHsemester().getHyear());
+		}
+		
+		//get major by department
+		System.out.println("\nget major by department");
+		ArrayList<Hmajor> m = uDB.getMajorByDepartment(3);
+		for (Hmajor mm : m){
+			System.out.println(mm.getMajorname() + " by department of "+mm.getHdepartment().getDepartname());
 		}
 	}
 

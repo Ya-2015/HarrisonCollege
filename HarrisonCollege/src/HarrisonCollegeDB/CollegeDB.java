@@ -13,6 +13,7 @@ import model.Hcourse;
 import model.Hdepartment;
 import model.Henrollment;
 import model.Hinstructor;
+import model.Hmajor;
 import model.Hschedule;
 import model.Hstudent;
 import model.Huser;
@@ -539,6 +540,29 @@ public class CollegeDB {
 		}
 		
 		return new ArrayList<Henrollment>(fd);
+	}
+	
+	//******************************************
+	//Major Related*****************************
+	//******************************************
+	public ArrayList<Hmajor> getMajorByDepartment(int departmentCode){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Hmajor> fd = null;
+		
+		try {
+			String sql = "select m from Hmajor m where m.hdepartment.code = ?1";
+			TypedQuery<Hmajor> q = em.createQuery(sql, Hmajor.class);
+			q.setParameter(1, departmentCode);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Hmajor>(fd);
 	}
 	
 	//******************************************

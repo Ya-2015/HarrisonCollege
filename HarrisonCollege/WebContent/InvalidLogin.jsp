@@ -12,18 +12,19 @@
 	integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
 	crossorigin="anonymous">
 </head>
-<%//HttpSession session = request.getSession();
+<%
+	//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
 	if (uName != null)
-	response.sendRedirect("UserClassRedirectorServlet"); %>
+		response.sendRedirect("StudentPage.jsp");
+%>
 <body>
 	<jsp:include page="/Navbar.jsp" />
-	
 	<div class="container">
 		<form action="LoginServlet" method="POST">
 			<div class="panel-group">
 				<div class="panel panel-info">
-					<div class="panel-heading">Please Logon Using Your NetID and Password</div>
+					<div class="panel-heading">Invalid Login Please Try Again</div>
 					<div class="panel-body">
 						<div class="form-group">
 							<label for="username" style="color: #141452"></label> <input
@@ -47,8 +48,6 @@
 		<br> <br>
 	</div>
 	<jsp:include page="/Footer.jsp" />
-
-	
 
 
 </body>

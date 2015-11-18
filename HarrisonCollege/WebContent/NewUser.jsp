@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib
+    prefix="c"
+    uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,18 +13,20 @@
 	integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
 	crossorigin="anonymous">
 </head>
-<%//HttpSession session = request.getSession();
-	String uName = (String) session.getAttribute("netid");
+<%
+	//HttpSession session = request.getSession();
+	String uName = (String) session.getAttribute("username");
 	if (uName != null)
-	response.sendRedirect("UserClassRedirectorServlet"); %>
+		response.sendRedirect("UserClassRedirectorServlet");
+%>
 <body>
 	<jsp:include page="/Navbar.jsp" />
-	
-	<div class="container">
-		<form action="LoginServlet" method="POST">
+
+	<div style="color: orange" id="cont" class="container">
+		<form action="AddUserServlet" method="POST">
 			<div class="panel-group">
 				<div class="panel panel-info">
-					<div class="panel-heading">Please Logon Using Your NetID and Password</div>
+					<div class="panel-heading">Provide NetID and select a Password</div>
 					<div class="panel-body">
 						<div class="form-group">
 							<label for="username" style="color: #141452"></label> <input
@@ -39,17 +42,16 @@
 						</div>
 						<br>
 						<!-- Single button -->
-						<button class="btn btn-primary btn-sm">Login</button>
+						<button class="btn btn-primary btn-sm">Sign Up</button>
 					</div>
 				</div>
 			</div>
 		</form>
 		<br> <br>
 	</div>
+
+
 	<jsp:include page="/Footer.jsp" />
-
-	
-
 
 </body>
 </html>

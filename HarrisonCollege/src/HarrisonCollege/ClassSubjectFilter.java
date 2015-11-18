@@ -12,32 +12,30 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Hclass;
-import model.Hcourse;
 import model.Hdepartment;
 import model.Hinstructor;
 import model.Hschedule;
 import HarrisonCollegeDB.CollegeDB;
 
 /**
- * Servlet implementation class ClassExplorerMainServlet
+ * Servlet implementation class ClassSubjectFilter
  */
-@WebServlet("/ClassExplorerMainServlet")
-public class ClassExplorerMainServlet extends HttpServlet {
+@WebServlet("/ClassSubjectFilter")
+public class ClassSubjectFilter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ClassSubjectFilter() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public ClassExplorerMainServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request,
+    protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
@@ -73,6 +71,7 @@ public class ClassExplorerMainServlet extends HttpServlet {
 					+i.getInstructorname() + "</a></li>";
 		}
 
+
 		String subjectDropdown = "";
 		ArrayList<String> subject = uDB.getAllUniqueSubjests();
 		for (String sub : subject) {
@@ -93,7 +92,7 @@ public class ClassExplorerMainServlet extends HttpServlet {
 		
 		
 	String classTable = "";
-		ArrayList<Hclass> data = uDB.getAllClasses();
+		ArrayList<Hclass> data = uDB.getClassBySubjectBySemester((String)request.getParameter("subjectID"),1);
 		for (Hclass dataset : data) {
 			if (dataset.getHschedule().getDow2() == null) {
 				classTable = classTable + "<div> <tr><td>"

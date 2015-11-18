@@ -82,7 +82,7 @@ public class departmentFilter extends HttpServlet {
 	
 		
 		String courseTable = "";
-		ArrayList<Hcourse> data =uDB.getAllCourses();
+		ArrayList<Hcourse> data =uDB.getCoursesByDepartment(Integer.parseInt(request.getParameter("departmentID")));
 		for (Hcourse dataset : data){
 		courseTable = courseTable + "<div> <tr><td>" + dataset.getHdepartment().getDepartname()
 				+ "</td><td>" + dataset.getSubjectcode()+ "</td><td>"

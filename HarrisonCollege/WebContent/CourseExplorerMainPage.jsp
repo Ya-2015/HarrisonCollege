@@ -20,7 +20,7 @@
 	//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
 	if (uName == null)
-		response.sendRedirect("HomePage");
+		response.sendRedirect("Login.jsp");
 %>
 <body>
 	<jsp:include page="/Navbar.jsp" />

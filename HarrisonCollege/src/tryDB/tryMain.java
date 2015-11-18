@@ -231,6 +231,13 @@ public class tryMain {
 		}else{
 			System.out.println("failed");
 		}
+		
+		//see roster by instructor by class by semester
+		System.out.println("\nsee roster by instructor by class by semester");
+		ArrayList<Hstudent> stu1 = uDB.getStudentsByClassNum(3);
+		for (Hstudent s : stu1){
+			System.out.println(s.getStudentname());
+		}
 	}
 
 }

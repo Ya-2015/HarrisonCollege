@@ -348,6 +348,27 @@ public class CollegeDB {
 		return new ArrayList<Hstudent>(fd);
 	}
 	
+	//
+	public ArrayList<Hstudent> getStudentsByClassNum(int classNum){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Hstudent> fd = null;
+		
+		try {
+			String sql = "select s.hstudent from Henrollment s where s.hclass.classnum = ?1";
+			TypedQuery<Hstudent> q = em.createQuery(sql, Hstudent.class);
+			q.setParameter(1, classNum);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Hstudent>(fd);
+	}
+	
 	public Hstudent getStudentProfileByStuNum(int stuNum){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		Hstudent fd = null;

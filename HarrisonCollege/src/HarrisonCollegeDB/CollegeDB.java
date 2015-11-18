@@ -197,25 +197,6 @@ public class CollegeDB {
 		return fd;
 	}
 	
-	public Hstudent getStudentProfileByNetId(String netId){
-		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		Hstudent fd = null;
-		
-		try {
-			String sql = "select s from Hstudent s where s.netid = ?1";
-			TypedQuery<Hstudent> q = em.createQuery(sql, Hstudent.class);
-			q.setParameter(1, netId);
-			
-			fd = q.getSingleResult();
-			
-		} catch (Exception e){
-			System.out.println(e);
-		} finally {
-			em.close();
-		}
-		
-		return fd;
-	}
 	//******************************************
 	//Class Related*****************************
 	//******************************************
@@ -304,6 +285,11 @@ public class CollegeDB {
 	//******************************************
 	public boolean enrollClass(int clsNum, int stuNum){
 		boolean isSuccess = false;
+		
+		//check whether student already enrolled in the class
+		if(getEnrollmentByStudentByClass(clsNum,stuNum)!=null){
+			return false;
+		}
 		
 		//get student
 		Hstudent stu = getStudentProfileByStuNum(stuNum);
@@ -433,4 +419,23 @@ public class CollegeDB {
 		return fd;
 	}
 	
+	public Hstudent getStudentProfileByNetId(String netId){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		Hstudent fd = null;
+		
+		try {
+			String sql = "select s from Hstudent s where s.netid = ?1";
+			TypedQuery<Hstudent> q = em.createQuery(sql, Hstudent.class);
+			q.setParameter(1, netId);
+			
+			fd = q.getSingleResult();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return fd;
+	}
 }

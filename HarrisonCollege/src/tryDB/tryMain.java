@@ -200,6 +200,19 @@ public class tryMain {
 		for (Hmajor mm : m){
 			System.out.println(mm.getMajorname() + " by department of "+mm.getHdepartment().getDepartname());
 		}
+		
+		System.out.println("\nget course by id");
+		Hcourse crs1 = uDB.getCoursesById(3);
+		System.out.println(crs1.getCoursecode()+" "+crs1.getCoursename());
+		
+		//update status of a course
+		System.out.println("\nupdate course status");
+		boolean cstat = uDB.updateCourseStatus(2, 0);
+		if(cstat){
+			System.out.println("success");
+		}else{
+			System.out.println("failed");
+		}
 	}
 
 }

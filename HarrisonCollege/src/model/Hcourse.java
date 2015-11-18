@@ -21,7 +21,7 @@ public class Hcourse implements Serializable {
 	@Id
 	@SequenceGenerator(schema="testuserdb",name="HCOURSE_COURSECODE_GENERATOR",sequenceName="HCOURSE_SEQ",allocationSize=1 )
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HCOURSE_COURSECODE_GENERATOR")
-	private long coursecode;
+	private int coursecode;
 
 	private String coursename;
 
@@ -29,7 +29,7 @@ public class Hcourse implements Serializable {
 
 	private String description;
 
-	private BigDecimal statuscode;
+	private int statuscode;
 
 	private String subjectcode;
 
@@ -45,11 +45,11 @@ public class Hcourse implements Serializable {
 	public Hcourse() {
 	}
 
-	public long getCoursecode() {
+	public int getCoursecode() {
 		return this.coursecode;
 	}
 
-	public void setCoursecode(long coursecode) {
+	public void setCoursecode(int coursecode) {
 		this.coursecode = coursecode;
 	}
 
@@ -77,11 +77,11 @@ public class Hcourse implements Serializable {
 		this.description = description;
 	}
 
-	public BigDecimal getStatuscode() {
+	public int getStatuscode() {
 		return this.statuscode;
 	}
 
-	public void setStatuscode(BigDecimal statuscode) {
+	public void setStatuscode(int statuscode) {
 		this.statuscode = statuscode;
 	}
 

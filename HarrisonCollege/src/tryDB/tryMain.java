@@ -157,6 +157,13 @@ public class tryMain {
 		for (Hclass c : cls1){
 			System.out.println(c.getHcourse().getSubjectcode()+" " + c.getHsemester().getSemestercode()+" "+c.getHsemester().getHyear());
 		}
+		
+		//get class by instructor by semester
+		System.out.println("\nGet class by instructor by semester");
+		ArrayList<Hclass> cls2 = uDB.getClassByInstructorBySemester(1, 1);
+		for (Hclass c : cls2){
+			System.out.println(c.getHcourse().getSubjectcode()+" " + c.getHsemester().getSemestercode()+" "+c.getHsemester().getHyear());
+		}
 	}
 
 }

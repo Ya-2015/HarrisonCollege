@@ -20,7 +20,7 @@ public class Hinstructor implements Serializable {
 	@Id
 	@SequenceGenerator(schema="testuserdb",name="HINSTRUCTOR_INSTRUCTORNUM_GENERATOR",sequenceName="HINSTRUCTOR_SEQ",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HINSTRUCTOR_INSTRUCTORNUM_GENERATOR")
-	private long instructornum;
+	private int instructornum;
 
 	private String instructorname;
 
@@ -40,11 +40,11 @@ public class Hinstructor implements Serializable {
 	public Hinstructor() {
 	}
 
-	public long getInstructornum() {
+	public int getInstructornum() {
 		return this.instructornum;
 	}
 
-	public void setInstructornum(long instructornum) {
+	public void setInstructornum(int instructornum) {
 		this.instructornum = instructornum;
 	}
 

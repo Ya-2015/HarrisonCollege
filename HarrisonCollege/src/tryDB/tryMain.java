@@ -185,6 +185,13 @@ public class tryMain {
 		for (Henrollment c : enr){
 			System.out.println(c.getGrade()+" "+c.getHclass().getHcourse().getCoursename());
 		}
+		
+		//get class by department by semester
+		System.out.println("\nview classed by department by semester");
+		ArrayList<Hclass> cls4 = uDB.getClassByDepartmentBySemester(3, 1);
+		for (Hclass c : cls4){
+			System.out.println(c.getHcourse().getHdepartment().getDepartname()+c.getHcourse().getSubjectcode()+" " + c.getHsemester().getSemestercode()+" "+c.getHsemester().getHyear());
+		}
 	}
 
 }

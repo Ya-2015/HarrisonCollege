@@ -18,8 +18,8 @@
 	response.sendRedirect("Login.jsp"); %>
 <body>
  <div class="container">
- 
- <c:if test="${Enrollflag==true}">
+
+ <c:if test="${EnrollFlag==true}">
   <h4>StudentNumber: ${studentInfo.studentnum }
 					<br> <small>Name: ${ studentInfo.studentname}</small><br>
 					
@@ -36,7 +36,7 @@
        
       </div>
       </c:if>
-<c:if test="${Enrollflag==false}">      
+<c:if test="${EnrollFlag==false}">      
 <p>Failed</p>
 </c:if>
 

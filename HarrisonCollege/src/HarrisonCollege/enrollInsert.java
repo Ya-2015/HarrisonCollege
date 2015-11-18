@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Hclass;
 import model.Hstudent;
@@ -47,20 +48,23 @@ public class enrollInsert extends HttpServlet {
 		Hstudent stu = db.getStudentProfileByStuNum(studentNum);
 		Hclass enrollClass=db.getClassById(classnum);
 		boolean enrollFlag=db.enrollClass(classnum, studentNum); 
-		request.setAttribute("EnrollFlag",enrollFlag);
+		HttpSession  session=request.getSession();
+		session.setAttribute("EnrollFlag",enrollFlag);
 		if (enrollFlag==true){
 			
-			request.setAttribute("studentInfo",stu);
-			request.setAttribute("Enrolledclass", enrollClass);
-			getServletContext().getRequestDispatcher("/Enrollconfirmation.jsp").forward(request, response);
-		
-		
-		}else{
-			
-			request.getRequestDispatcher("/Enrollconfirmation.jsp").forward(request, response);
-		
-			
+			session.setAttribute("studentInfo",stu);
+			session.setAttribute("Enrolledclass", enrollClass);
+			//getServletContext().getRequestDispatcher("/Enrollconfirmation.jsp").forward(request, response);
 		}
+		
+		
+//		}else{
+//			
+//			request.getRequestDispatcher("/Enrollconfirmation.jsp").forward(request, response);
+//		
+//			
+//		}
+		response.sendRedirect("Enrollconfirmation.jsp");
 		
 	}
 }

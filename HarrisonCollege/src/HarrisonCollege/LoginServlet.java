@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
 		if (loggedIn != null)
 		{
 			session.setAttribute("netid", loggedIn.getNetid());
-				switch(loggedIn.getUsertype().intValueExact()){
+				switch(loggedIn.getUsertype()){
 				case 1 :	
 						{
 							session.setAttribute("usertype", "student");

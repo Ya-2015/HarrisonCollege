@@ -63,6 +63,59 @@ public class CollegeDB {
 		return new ArrayList<Hcourse>(fd);
 	}
 	
+	public Hcourse getCoursesById(int courseNum){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		Hcourse fd = null;
+		
+		try {
+			String sql = "select c from Hcourse c where c.coursecode = ?1";
+			TypedQuery<Hcourse> q = em.createQuery(sql, Hcourse.class);
+			q.setParameter(1, courseNum);
+			
+			fd = q.getSingleResult();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return fd;
+	}
+	
+	public boolean updateCourseStatus(int courseNum, int status){
+		boolean isSuccess = false;
+		
+		if(status < 0 || status > 1){
+			return false;
+		}
+		
+		Hcourse crs = getCoursesById(courseNum);
+		if(crs==null){
+			return false;
+		}else{
+			crs.setStatuscode(status);
+		}
+		
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		
+		trans.begin();
+		
+		try{
+			em.merge(crs);
+			trans.commit();
+			isSuccess = true;
+		}catch(Exception e){
+			System.out.println(e);
+			trans.rollback();
+		}finally{
+			em.close();
+		}
+		
+		return isSuccess;
+	}
+	
 	//all unique subjects
 	public ArrayList<String> getAllUniqueSubjests(){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();

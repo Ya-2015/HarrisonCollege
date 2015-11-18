@@ -21,7 +21,7 @@ public class Hdepartment implements Serializable {
 	@Id
 	@SequenceGenerator(schema="testuserdb", name="HDEPARTMENT_CODE_GENERATOR", sequenceName="HDEPARTMENT_SEQ",allocationSize=1 )
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HDEPARTMENT_CODE_GENERATOR")
-	private long code;
+	private int code;
 
 	private String departname;
 
@@ -42,11 +42,11 @@ public class Hdepartment implements Serializable {
 	public Hdepartment() {
 	}
 
-	public long getCode() {
+	public int getCode() {
 		return this.code;
 	}
 
-	public void setCode(long code) {
+	public void setCode(int code) {
 		this.code = code;
 	}
 

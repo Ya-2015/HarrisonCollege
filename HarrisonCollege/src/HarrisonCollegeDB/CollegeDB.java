@@ -42,6 +42,26 @@ public class CollegeDB {
 		return new ArrayList<Hcourse>(fd);
 	}
 	
+	public ArrayList<Hcourse> getCoursesByDepartment(int departmentCode){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Hcourse> fd = null;
+		
+		try {
+			String sql = "select c from Hcourse c where c.hdepartment.code = ?1";
+			TypedQuery<Hcourse> q = em.createQuery(sql, Hcourse.class);
+			q.setParameter(1, departmentCode);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Hcourse>(fd);
+	}
+	
 	//all unique subjects
 	public ArrayList<String> getAllUniqueSubjests(){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();

@@ -171,6 +171,13 @@ public class tryMain {
 		for (Hclass c : cls3){
 			System.out.println(c.getHcourse().getSubjectcode()+" " + c.getHsemester().getSemestercode()+" "+c.getHsemester().getHyear());
 		}
+		
+		//get courses by department
+		System.out.println("\nGet courses by department");
+		ArrayList<Hcourse> crs = uDB.getCoursesByDepartment(1);
+		for (Hcourse c : crs){
+			System.out.println(c.getSubjectcode()+" "+c.getCoursename());
+		}
 	}
 
 }

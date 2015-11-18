@@ -13,6 +13,7 @@ import model.Hcourse;
 import model.Hdepartment;
 import model.Henrollment;
 import model.Hinstructor;
+import model.Hmajor;
 import model.Hschedule;
 import model.Hstudent;
 import model.Huser;
@@ -383,6 +384,27 @@ public class CollegeDB {
 		return new ArrayList<Hclass>(fd);
 	}
 	
+	public ArrayList<Hclass> getClassByDepartmentBySemester(int departmentCode, int semesterCode){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Hclass> fd = null;
+		
+		try {
+			String sql = "select c from Hclass c where c.hsemester.semestercode = ?1 and c.hcourse.hdepartment.code = ?2";
+			TypedQuery<Hclass> q = em.createQuery(sql, Hclass.class);
+			q.setParameter(1, semesterCode);
+			q.setParameter(2, departmentCode);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Hclass>(fd);
+	}
+	
 	public ArrayList<Hclass> getClassByStudentBySemester(int stuNum, int semesterCode){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		List<Hclass> fd = null;
@@ -403,6 +425,8 @@ public class CollegeDB {
 		
 		return new ArrayList<Hclass>(fd);
 	}
+	
+
 	//******************************************
 	//(Un)Enrollment Related********************
 	//******************************************
@@ -516,6 +540,29 @@ public class CollegeDB {
 		}
 		
 		return new ArrayList<Henrollment>(fd);
+	}
+	
+	//******************************************
+	//Major Related*****************************
+	//******************************************
+	public ArrayList<Hmajor> getMajorByDepartment(int departmentCode){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Hmajor> fd = null;
+		
+		try {
+			String sql = "select m from Hmajor m where m.hdepartment.code = ?1";
+			TypedQuery<Hmajor> q = em.createQuery(sql, Hmajor.class);
+			q.setParameter(1, departmentCode);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Hmajor>(fd);
 	}
 	
 	//******************************************

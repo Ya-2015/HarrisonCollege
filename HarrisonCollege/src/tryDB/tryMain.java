@@ -118,7 +118,13 @@ public class tryMain {
 		}else{
 			System.out.println("Stu Name: "+s1.getStudentname()+" "+"Stu Num: "+ s1.getStudentnum());
 		}
-		
+	
+		//get all users
+		System.out.println("\nAll User Info");
+		ArrayList<Huser> allU = uDB.getAllUsers();
+		for(Huser u: allU){
+			System.out.println(u.getNetid()+" " + u.getUsertype());
+		}
 	}
 
 }

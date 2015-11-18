@@ -399,6 +399,25 @@ public class CollegeDB {
 		return fd;
 	}
 
+	public ArrayList<Huser> getAllUsers(){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Huser> fd = null;
+		
+		try {
+			String sql = "select u from Huser u";
+			TypedQuery<Huser> q = em.createQuery(sql, Huser.class);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Huser>(fd);
+	}
+	
 	public Hinstructor getInstructorProfileByNetId(String netid) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		Hinstructor fd = null;

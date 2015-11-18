@@ -342,6 +342,27 @@ public class CollegeDB {
 		return new ArrayList<Hclass>(fd);
 	}
 	
+	public ArrayList<Hclass> getClassByCertainTimeBySemester(int hr, int semesterCode){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		List<Hclass> fd = null;
+		
+		try {
+			String sql = "select c from Hclass c where c.hsemester.semestercode = ?1 and c.hschedule.hour12 = ?2";
+			TypedQuery<Hclass> q = em.createQuery(sql, Hclass.class);
+			q.setParameter(1, semesterCode);
+			q.setParameter(2, hr);
+			
+			fd = q.getResultList();
+			
+		} catch (Exception e){
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		
+		return new ArrayList<Hclass>(fd);
+	}
+	
 	public ArrayList<Hclass> getClassByStudentBySemester(int stuNum, int semesterCode){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		List<Hclass> fd = null;

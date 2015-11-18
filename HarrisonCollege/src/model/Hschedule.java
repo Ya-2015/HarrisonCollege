@@ -21,7 +21,7 @@ public class Hschedule implements Serializable {
 	@Id
 	@SequenceGenerator(schema="testuserdb",name="HSCHEDULE_SCHEDULECODE_GENERATOR",sequenceName="HSCHEDULE_SEQ",allocationSize=1 )
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HSCHEDULE_SCHEDULECODE_GENERATOR")
-	private long schedulecode;
+	private int schedulecode;
 
 	private String ampm;
 
@@ -29,7 +29,7 @@ public class Hschedule implements Serializable {
 
 	private String dow2;
 
-	private BigDecimal hour12;
+	private int hour12;
 
 	private BigDecimal minutes60;
 
@@ -40,11 +40,11 @@ public class Hschedule implements Serializable {
 	public Hschedule() {
 	}
 
-	public long getSchedulecode() {
+	public int getSchedulecode() {
 		return this.schedulecode;
 	}
 
-	public void setSchedulecode(long schedulecode) {
+	public void setSchedulecode(int schedulecode) {
 		this.schedulecode = schedulecode;
 	}
 
@@ -72,11 +72,11 @@ public class Hschedule implements Serializable {
 		this.dow2 = dow2;
 	}
 
-	public BigDecimal getHour12() {
+	public int getHour12() {
 		return this.hour12;
 	}
 
-	public void setHour12(BigDecimal hour12) {
+	public void setHour12(int hour12) {
 		this.hour12 = hour12;
 	}
 

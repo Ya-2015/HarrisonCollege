@@ -44,7 +44,7 @@ public class realDrop extends HttpServlet {
 		request.setAttribute("Dropflag", drop);
 	
 	try {
-		getServletContext().getRequestDispatcher("/Dropconfirmation.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/Dropcofirmation.jsp").forward(request, response);
 	} catch (ServletException e) {
 		
 		e.printStackTrace();

@@ -87,7 +87,7 @@ public class CourseStatusChangerServlet extends HttpServlet {
 					+ dataset.getCredits()
 					+ "</td><td>"
 					+ "<a href=\"ChangeStatusCourses.jsp?Coursecode="
-					+ dataset.getCoursecode()
+					+ dataset.getCoursecode()+"&Coursestatus="+dataset.getStatuscode()
 					+ "\" class=\"btn btn-info\" role=\"button\">Change Status</a>"
 					+ "</td></tr>" + "</div>";
 		}

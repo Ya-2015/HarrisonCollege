@@ -39,15 +39,15 @@ public class enrollInsert extends HttpServlet {
 	private void processenrollInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		CollegeDB  db= new CollegeDB();
 		String strstudentnum = request.getParameter("studentNumber");
-	    int  classnum =3;
+		String strEnrollClass = request.getParameter("enrolledclass");
 		
 		int studentNum =Integer.parseInt(strstudentnum);
-		
+		int classnum=Integer.parseInt(strEnrollClass);
 
 		Hstudent stu = db.getStudentProfileByStuNum(studentNum);
 		Hclass enrollClass=db.getClassById(classnum);
 		boolean enrollFlag=db.enrollClass(classnum, studentNum); 
-		request.setAttribute("enrollFlag",enrollFlag);
+		request.setAttribute("EnrollFlag",enrollFlag);
 		if (enrollFlag==true){
 			
 			request.setAttribute("studentInfo",stu);
@@ -56,8 +56,10 @@ public class enrollInsert extends HttpServlet {
 		
 		
 		}else{
+			
+			request.getRequestDispatcher("/Enrollconfirmation.jsp").forward(request, response);
 		
-			getServletContext().getRequestDispatcher("/Enrollconfirmation.jsp").forward(request, response);
+			
 		}
 		
 	}

@@ -20,10 +20,10 @@
  <div class="container">
 
       <div class="starter-template">
-        <c:if test="${ChangeTypeflag==true}">
-         <p>Congratulation! You have changed type successfully.</p>
+        <c:if test="${CourseStatusFlag==true}">
+         <p>Congratulation!The course status has been changed successfully.</p>
              </c:if>
-             <c:if test="${ChangeTypeflag==false}">
+             <c:if test="${CourseStatusFlag==false}">
             <p>Failed</p>
              </c:if>
       </div>

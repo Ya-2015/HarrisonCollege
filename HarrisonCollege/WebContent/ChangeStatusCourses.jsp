@@ -27,25 +27,28 @@
 
 				<div class="panel-body">
 					<form action="ChangeStatusCourse" method="post">
-
-						<label>Enrolled Class:</label><input type="text"
-							name="enrolledclass" size="20"
+                      <label>Course Number:</label><input type="text"
+							name="courseNumber" size="20"
 							value="<%=request.getParameter("Coursecode")%>" /> <br>
+						<label>Course Current Status:</label><input type="text"
+							name="courseStatus" size="20"
+							value="<%=request.getParameter("Coursestatus")%>" /> <br>
+						
 							<br><div class="dropdown">
   
   
 				  Change Status:
 				 
-				   <select name = "type">
+				   <select name = "status">
 				   
 				<option value="1">1 (Enable)</option>
-				  <option value="2">2 (Disable)</option>
+				  <option value="0">0 (Disable)</option>
 				 
 				 
 				   </select>  
 				
 				   </div>
-						 
+						 <br>
 						<button type="submit" class="btn btn-info">Submit</button>
 					</form>
 						
@@ -59,24 +62,28 @@
 				<div class="panel-body">
 					<form action="ChangeStatusCourse" method="post">
 
-						<label>Enrolled Class:</label><input type="text"
-							name="enrolledclass" size="20"
+						<label>Course Number:</label><input type="text"
+							name="courseNumber" size="20"
 							value="<%=request.getParameter("Coursecode")%>" /> <br>
+						<label>Course Current Status:</label><input type="text"
+							name="courseStatus" size="20"
+							value="<%=request.getParameter("Coursestatus")%>" /> <br>
+								
 						<br><div class="dropdown">
   
   
 				  Change Status:
 				 
-				   <select name = "type">
+				   <select name = "status">
 				   
 				<option value="1">1 (Enable)</option>
-				  <option value="2">2 (Disable)</option>
+				  <option value="0">0 (Disable)</option>
 				 
 				 
 				   </select>  
 				
 				   </div>
-						 
+						 <br>
 						<button type="submit" class="btn btn-info">Submit</button>
 					</form>
 

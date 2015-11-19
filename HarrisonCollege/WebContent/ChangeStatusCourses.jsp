@@ -43,7 +43,7 @@
 							name="departmentName" size="20"
 							value="<%=request.getParameter("departmentName")%>" /> <br>		
 						<label>Description:</label><input type="text"
-							name="description" size="20"
+							name="Description1" size="20"
 							value="<%=request.getParameter("description")%>" /> <br>	
 						<label>Credit:</label><input type="text"
 							name="credit" size="20"

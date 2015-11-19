@@ -76,7 +76,7 @@ public class ClassDepartmentFilter extends HttpServlet {
 		ArrayList<String> subject = uDB.getAllUniqueSubjests();
 		for (String sub : subject) {
 			subjectDropdown = subjectDropdown
-					+ "<li><a href = \"subjectFilter?subjectID="
+					+ "<li><a href = \"ClassSubjectFilter?subjectID="
 					+sub + "\">"
 					+sub + "</a></li>";
 		}

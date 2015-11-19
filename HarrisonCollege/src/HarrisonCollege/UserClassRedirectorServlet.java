@@ -40,12 +40,13 @@ public class UserClassRedirectorServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	
-	 protected void doGet(HttpServletRequest request,
-				HttpServletResponse response) throws ServletException, IOException {
-			doPost(request, response);
-			// TODO Auto-generated method stub
-		}
+
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+		// TODO Auto-generated method stub
+	}
+
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -56,25 +57,29 @@ public class UserClassRedirectorServlet extends HttpServlet {
 		Huser loggedIn = cDB.getUserProfile(request.getParameter("username"),
 				request.getParameter("password"));
 
-		switch ((Integer) session.getAttribute("usercode")) {
-		case 1: {
-			response.sendRedirect("StudentPage.jsp");
-			break;
-		}
-		case 2: {
+		if ((Integer) session.getAttribute("usercode") != null) {
+			switch ((Integer) session.getAttribute("usercode")) {
+			case 1: {
+				response.sendRedirect("StudentPage.jsp");
+				break;
+			}
+			case 2: {
 
-			response.sendRedirect("InstructorPage.jsp");
-			break;
-		}
-		case 3: {
-			response.sendRedirect("AdvisorPage.jsp");
-			break;
-		}
-		case 4: {
-			response.sendRedirect("AdministratorPage.jsp");
-			break;
-		}
+				response.sendRedirect("InstructorPage.jsp");
+				break;
+			}
+			case 3: {
+				response.sendRedirect("AdvisorPage.jsp");
+				break;
+			}
+			case 4: {
+				response.sendRedirect("AdministratorPage.jsp");
+				break;
+			}
 
+			}
 		}
+		else
+			response.sendRedirect("Login.jsp");
 	}
 }

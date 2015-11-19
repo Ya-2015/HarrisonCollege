@@ -24,9 +24,8 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="HomeServlet">Products <span
-								class="sr-only">(current)</span></a></li>
-						<li><a href="CartServlet"><%=session.getAttribute("username")%></a></li>
+						
+						<li><a href="UserClassRedirectorServlet"><%=(String) session.getAttribute("username")%></a></li>
 
 					</ul>
 					<form class="navbar-form navbar-left" role="search">

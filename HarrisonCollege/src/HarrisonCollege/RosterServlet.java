@@ -48,15 +48,23 @@ public class RosterServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		CollegeDB uDB = new CollegeDB();
-
+		int semID=1;
 		HttpSession session = request.getSession();
 		String rosterDropdown = "";
 		if (session.getAttribute("instructorNumber") == null) {
 			getServletContext().getRequestDispatcher(
 					"/UserClassRedirectorServlet").forward(request, response);
 		} else {
+			if(request.getParameter("semesterID")!=null)
+			{
+				session.setAttribute("semesterID", Integer.parseInt(request.getParameter("semesterID")));
+				semID = Integer.parseInt(request.getParameter("semesterID"));
+			}
+			else
+				semID= Integer.parseInt(session.getAttribute("semesterID").toString());
+			
 			ArrayList<Hclass> depar = uDB.getClassByInstructorBySemester(
-					(Integer) session.getAttribute("instructorNumber"), 1);
+					(Integer) session.getAttribute("instructorNumber"),semID);
 			for (Hclass dset : depar) {
 				ArrayList<Henrollment> rost = uDB
 						.viewGradeSheetByClass((Integer) dset.getClassnum());
@@ -153,6 +161,7 @@ public class RosterServlet extends HttpServlet {
 				}
 				rosterDropdown = rosterDropdown + "</table></div></div></div>";
 			}
+			
 			request.setAttribute("rosterDropdown", rosterDropdown);
 			getServletContext().getRequestDispatcher("/RosterDisplay.jsp")
 					.forward(request, response);

@@ -24,8 +24,8 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">Course Manager</div>
 				<div class="panel-body">
-					<a href="EnrollClassServlet">Add Courses</a><br>
-					<a href="drop.jsp">Drop Courses</a><br>
+					<a href="EnrollClassServlet">Enroll Classes</a><br>
+					<a href="drop.jsp">Drop Classes</a><br>
 					<a href="StudentScheduleServlet">Current Schedule</a><br>
 					<a href="CourseExplorerMainServlet">Go To Course Explorer</a><br>
 					<a href="MajorExplorerServlet">Major Explorer</a><br>

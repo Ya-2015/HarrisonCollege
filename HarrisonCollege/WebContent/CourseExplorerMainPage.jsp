@@ -42,15 +42,14 @@
 						<th><div class="dropdown">
 								<button class="btn btn-primary dropdown-toggle" type="button"
 									data-toggle="dropdown">
-									Subject <span class="caret"></span>
+									Subject
 								</button>
-								<ul class="dropdown-menu">${subjectDropdown}
-								</ul>
+								
 							</div></th>
 						<th><div class="dropdown">
 								<button class="btn btn-primary dropdown-toggle" type="button"
 									data-toggle="dropdown">
-									Description <span class="caret"></span>
+									Description 
 								</button>
 
 							</div></th>
@@ -59,9 +58,7 @@
 									data-toggle="dropdown">Credits</button>
 							</div></th>
 
-						<th><a href="SortManagerServlet" class="btn btn-info"
-							role="button">Sort</a></th>
-						<th></th>
+					
 					</tr>
 
 					${courseTable}

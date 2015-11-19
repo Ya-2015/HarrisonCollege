@@ -48,9 +48,6 @@ public class StudentScheduleServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		CollegeDB uDB = new CollegeDB();
-		PrintWriter out = response.getWriter();
-		int j = 0;
-
 		HttpSession session = request.getSession();
 		String scheduleDropdown = "";
 		ArrayList<Hclass> depar = uDB.getClassByStudentBySemester(

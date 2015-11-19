@@ -16,7 +16,7 @@
 	//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
 	if (uName == null)
-		response.sendRedirect("HomePage");
+		response.sendRedirect("Login.jsp");
 %>
 <body>
 	<jsp:include page="/Navbar.jsp" />
@@ -28,10 +28,10 @@
 					<font size="4">Course Manager</font>
 				</div>
 				<div class="panel-body">
-					<a href="">Create Courses</a><br>
-					 <a href="">Update Courses</a><br>
+					<a href="departmentList">Create Courses</a><br>
+					 <a href="CourseStatusChangerServlet">Update Courses</a><br>
 					  <a href="CourseExplorerMainServlet">List Courses</a><br>
-					   <a href="">Disable Courses</a><br>
+					   
 				</div>
 			</div>
 

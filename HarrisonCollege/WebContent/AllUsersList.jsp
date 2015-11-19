@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Users</title>
+<title>Admin</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
@@ -19,31 +19,8 @@
 		response.sendRedirect("Login.jsp");
 %>
 <body>
+	<jsp:include page="/Navbar.jsp" />
 	<div class="container">
-		<nav class="navbar navbar-default">
-		<div class="container">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-						aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-
-
-					<a class="navbar-brand">Harrison College!</a> <a
-						class="navbar-brand" href="#">Transcript</a> <a
-						class="navbar-brand" href="#">${myUser.username}</a> <a
-						class="navbar-brand" href="LogoutServlet">Log Out</a>
-
-				</div>
-
-			</div>
-		</div>
-		</nav>
-		</br>
 
 		<div class="panel panel-default">
 
@@ -104,5 +81,6 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="/Footer.jsp" />
 </body>
 </html>

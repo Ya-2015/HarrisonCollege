@@ -19,10 +19,10 @@
 <body>
 	<jsp:include page="/Navbar.jsp" />
 	<div class="container">
-		<h2 style="color: white">Welcome Advisor</h2>
+		<h2 style="color: black">Welcome Advisor</h2>
 		<div class="panel-group">
 			<div class="panel panel-info">
-				<div class="panel-heading">Student Course Manager</div>
+				<div class="panel-heading"> Course Manager</div>
 				<div class="panel-body">
 					<a href="EnrollClassServlet">Add Students to Courses</a><br>
 					<a href="drop.jsp">Drop Students From Courses</a><br>					

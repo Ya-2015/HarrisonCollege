@@ -23,7 +23,7 @@
 
 
 
-
+<div class = "container">
 	<div class="panel panel-default">
 
 		<div class="panel-body">
@@ -35,11 +35,12 @@
 					, placeholder="Your student number"> <br> <br>
 				<button type="submit" class="btn btn-info">Submit</button>
 			</form>
+			<br><br>
 			<a href="UserClassRedirectorServlet" class="btn btn-info"
 				role="button">Back To Home</a>
 		</div>
 	</div>
-
+</div>
 
 
 	<jsp:include page="/Footer.jsp" />

@@ -19,7 +19,7 @@
 <body>
 	<jsp:include page="/Navbar.jsp" />
 	<div class="container">
-		<h2 style="color: white">Welcome Student</h2>
+		<h2 style="color: black">Welcome Student</h2>
 		<div class="panel-group">
 			<div class="panel panel-info">
 				<div class="panel-heading">Course Manager</div>

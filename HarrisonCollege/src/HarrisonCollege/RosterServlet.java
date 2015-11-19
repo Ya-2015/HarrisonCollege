@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Hclass;
+import model.Henrollment;
 import model.Hstudent;
 import HarrisonCollegeDB.CollegeDB;
 
@@ -57,8 +58,9 @@ public class RosterServlet extends HttpServlet {
 			ArrayList<Hclass> depar = uDB.getClassByInstructorBySemester(
 					(Integer) session.getAttribute("instructorNumber"), 1);
 			for (Hclass dset : depar) {
-				ArrayList<Hstudent> rost = uDB
-						.getStudentsByClassNum((Integer) dset.getClassnum());
+				ArrayList<Henrollment> rost = uDB
+						.viewGradeSheetByClass((Integer) dset.getClassnum());
+
 				rosterDropdown = rosterDropdown
 						+ "<div class=\"panel-group\"><div class=\"panel panel-info\"><div class=\"panel-heading\">"
 						+ dset.getCrn()
@@ -66,14 +68,88 @@ public class RosterServlet extends HttpServlet {
 						+ dset.getHcourse().getSubjectcode().toUpperCase()
 						+ "	"
 						+ dset.getHcourse().getCoursename().toUpperCase()
-						+ "</div><div class=\"panel-body\"><table class=\"table table-striped\"><tr><th>NetID</th><th>NetID</th><th>Student Name</th><th>Student Number</th></tr>";
-				for (Hstudent dataset : rost) {
+						+ "</div><div class=\"panel-body\"><table class=\"table table-striped\"><tr><th>NetID</th></th><th>Student Name</th><th>Student Number</th><th>Grade</th></tr>";
+				for (Henrollment dataset : rost) {
 
-					rosterDropdown = rosterDropdown + "<div> <tr><td>"
-							+ dataset.getNetid() + "</td><td>"
-							+ dataset.getStudentname() + "</td><td>"
-							+ dataset.getStudentnum() + "</td></tr>" + "</div>";
+					if (dataset.getGrade() != null) {
+						rosterDropdown = rosterDropdown
+								+ "<div> <tr><td>"
+								+ dataset.getHstudent().getNetid()
+								+ "</td><td>"
+								+ dataset.getHstudent().getStudentname()
+								+ "</td><td>"
+								+ dataset.getHstudent().getStudentnum()
+								+ "</td><td>"
+								+ dataset.getGrade()
+								+ "</td><td><div class=\"dropdown\"><button class=\"btn btn-primary btn-xs dropdown-toggle\" type=\"button\"data-toggle=\"dropdown\">"
+								+ "Assign Grade <span class=\"caret\"></span></button><ul class=\"dropdown-menu noclose\">"
+								+ "<a href=\"AssignGradeServlet?grade=A&studentNumber="
+								+ dataset.getHstudent().getStudentnum()
+								+ "&classNumber="
+								+ dset.getClassnum()
+								+ "\" class=\"btn btn-success\" role=\"button\">A</a>"
+								+ "<a href=\"AssignGradeServlet?grade=B&studentNumber="
+								+ dataset.getHstudent().getStudentnum()
+								+ "&classNumber="
+								+ dset.getClassnum()
+								+ "\" class=\"btn btn-success\" role=\"button\">B</a>"
+								+ "<a href=\"AssignGradeServlet?grade=C&studentNumber="
+								+ dataset.getHstudent().getStudentnum()
+								+ "&classNumber="
+								+ dset.getClassnum()
+								+ "\" class=\"btn btn-warning\" role=\"button\">C</a>"
+								+ "<a href=\"AssignGradeServlet?grade=D&studentNumber="
+								+ dataset.getHstudent().getStudentnum()
+								+ "&classNumber="
+								+ dset.getClassnum()
+								+ "\" class=\"btn btn-warning\" role=\"button\">D</a>"
+								+ "<a href=\"AssignGradeServlet?grade=F&studentNumber="
+								+ dataset.getHstudent().getStudentnum()
+								+ "&classNumber="
+								+ dset.getClassnum()
+								+ "\" class=\"btn btn-danger\" role=\"button\">F</a>"
+								+ "</ul></div></td></tr>" + "</div>";
 
+					} else {
+						rosterDropdown = rosterDropdown
+								+ "<div> <tr><td>"
+								+ dataset.getHstudent().getNetid()
+								+ "</td><td>"
+								+ dataset.getHstudent().getStudentname()
+								+ "</td><td>"
+								+ dataset.getHstudent().getStudentnum()
+								+ "</td><td>"
+								+ "Not Yet Assigned"
+								+ "</td><td><div class=\"dropdown\"><button class=\"btn btn-primary btn-xs dropdown-toggle\" type=\"button\"data-toggle=\"dropdown\">"
+								+ "Assign Grade <span class=\"caret\"></span></button><ul class=\"dropdown-menu noclose\">"
+								+ "<a href=\"AssignGradeServlet?grade=A&studentNumber="
+								+ dataset.getHstudent().getStudentnum()
+								+ "&classNumber="
+								+ dset.getClassnum()
+								+ "\" class=\"btn btn-success\" role=\"button\">A</a>"
+								+ "<a href=\"AssignGradeServlet?grade=B&studentNumber="
+								+ dataset.getHstudent().getStudentnum()
+								+ "&classNumber="
+								+ dset.getClassnum()
+								+ "\" class=\"btn btn-success\" role=\"button\">B</a>"
+								+ "<a href=\"AssignGradeServlet?grade=C&studentNumber="
+								+ dataset.getHstudent().getStudentnum()
+								+ "&classNumber="
+								+ dset.getClassnum()
+								+ "\" class=\"btn btn-warning\" role=\"button\">C</a>"
+								+ "<a href=\"AssignGradeServlet?grade=D&studentNumber="
+								+ dataset.getHstudent().getStudentnum()
+								+ "&classNumber="
+								+ dset.getClassnum()
+								+ "\" class=\"btn btn-warning\" role=\"button\">D</a>"
+								+ "<a href=\"AssignGradeServlet?grade=F&studentNumber="
+								+ dataset.getHstudent().getStudentnum()
+								+ "&classNumber="
+								+ dset.getClassnum()
+								+ "\" class=\"btn btn-danger\" role=\"button\">F</a>"
+								+ "</ul></div></td></tr>" + "</div>";
+
+					}
 				}
 				rosterDropdown = rosterDropdown + "</table></div></div></div>";
 			}

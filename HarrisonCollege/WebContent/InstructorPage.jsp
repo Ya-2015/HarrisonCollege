@@ -25,7 +25,7 @@
 				<div class="panel-heading">Instructor Action Suite</div>
 				<div class="panel-body">
 					<a href="InstructorCurrentClassesServlet">View All Classes</a><br>
-					<a href="">Class Roster Manager</a><br>
+					<a href="RosterServlet">Class Roster Manager</a><br>
 					<a href="">Current Gradebook </a><br>
 					<a href="">Historic Gradebooks</a><br>
 					<a href="">Go To Course Explorer</a><br>

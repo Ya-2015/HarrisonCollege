@@ -21,14 +21,13 @@
 <body>
 	<jsp:include page="/Navbar.jsp" />
 	<div class="container">
-		<h2 style="color: white">Welcome Instructor</h2>
-		<h2 style="color: white">Student Roster</h2>
-		
-						${rosterDropdown}
-					
-				
-		<a href="UserClassRedirectorServlet" class="btn btn-info"
-			role="button">Back To Home</a>
+		<h2 style="color: black">Welcome Instructor</h2>
+		<div align="center">
+			<h3 style="color: black">Student Roster</h3>
+		</div>
+
+		${rosterDropdown} <a href="UserClassRedirectorServlet"
+			class="btn btn-info" role="button">Back To Home</a>
 	</div>
 	<jsp:include page="/Footer.jsp" />
 

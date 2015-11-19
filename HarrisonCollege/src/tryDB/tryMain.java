@@ -257,6 +257,13 @@ public class tryMain {
 		//get current semester code
 		Hsemester sem2 = uDB.getCurrentSemester(2014, "fall");
 		System.out.println(sem2.getSemestercode() + " " +sem2.getHyear() + " "+sem2.getSemester());
+		
+		//get all semesters
+		System.out.println("\n get all semesters");
+		ArrayList<Hsemester> allSem = uDB.getAllSemesters();
+		for(Hsemester s2 : allSem){
+			System.out.println(s2.getSemestercode() + " " +s2.getHyear() + " "+s2.getSemester());
+		}
 	}
 
 }

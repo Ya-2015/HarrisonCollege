@@ -927,6 +927,25 @@ public class CollegeDB {
         }
         
         return fd;     
-}
+	}
+	
+	public ArrayList<Hsemester> getAllSemesters(){
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        List<Hsemester> fd = null;
+        
+        try {
+            String sql = "select s from Hsemester s";
+            TypedQuery<Hsemester> q = em.createQuery(sql, Hsemester.class);
+            
+            fd = q.getResultList();
+            
+        } catch (Exception e){
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+        
+        return new ArrayList<Hsemester>(fd);                                         
+	}
 
 }

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login</title>
+<title>Advisor</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
@@ -24,9 +24,11 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">Student Course Manager</div>
 				<div class="panel-body">
-					<a href="">Add Students to Courses</a><br>
-					<a href="">Drop Students From Courses</a><br>					
-					<a href="">Go To Course Explorer</a><br>
+					<a href="EnrollClassServlet">Add Students to Courses</a><br>
+					<a href="drop.jsp">Drop Students From Courses</a><br>					
+					<a href="CourseExplorerMainServlet">Go To Course Explorer</a><br>
+					<a href="MajorExplorerServlet">Major Explorer</a><br>
+					<a href="ClassExplorerMainServlet">View All Classes On Campus</a><br>
 				</div>
 			</div>
 			<div class="panel panel-info">

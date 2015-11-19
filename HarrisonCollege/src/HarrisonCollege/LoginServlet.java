@@ -82,7 +82,7 @@ public class LoginServlet extends HttpServlet {
 				case 3 :    
 							{session.setAttribute("usertype", "advisor");
 							session.setAttribute("usercode", 3);
-							response.sendRedirect("AdvisorPage.jsp");
+							response.sendRedirect("AdvisorsPage.jsp");
 							
 							break;}
 				case 4 :	{session.setAttribute("usertype", "admin");

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login</title>
+<title>Create Course</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
@@ -14,7 +14,7 @@
 </head>
 <%//HttpSession session = request.getSession();
 	String uName = (String) session.getAttribute("netid");
-	if (uName != null)
+	if (uName == null)
 	response.sendRedirect("Login.jsp"); %>
 <body>
 	<div class="container">

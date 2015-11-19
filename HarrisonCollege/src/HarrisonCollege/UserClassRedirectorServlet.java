@@ -69,7 +69,7 @@ public class UserClassRedirectorServlet extends HttpServlet {
 				break;
 			}
 			case 3: {
-				response.sendRedirect("AdvisorPage.jsp");
+				response.sendRedirect("AdvisorsPage.jsp");
 				break;
 			}
 			case 4: {

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Departments</title>
+<title>Semesters</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
@@ -21,11 +21,15 @@
 <body>
 	<jsp:include page="/Navbar.jsp" />
 	<div class="container">
-		<h2 style="color: white">Welcome Student</h2>
+		<h2 style="color: white">Welcome Instructor</h2>
 		<div class="panel-group">
 			<div class="panel panel-info">
-				<div class="panel-heading">Select a Department to view Majors</div>
-				<div class="panel-body">${departmentDropdown}</div>
+				<div class="panel-heading">Select Semester</div>
+				<div class="panel-body">
+					
+						${semesterDropdown}
+					
+				</div>
 			</div>
 		</div>
 		<a href="UserClassRedirectorServlet" class="btn btn-info"

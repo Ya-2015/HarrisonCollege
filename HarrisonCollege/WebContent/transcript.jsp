@@ -58,8 +58,9 @@
 					<thead>
 
 						<tr>
-
-							<th>Subjectcode</th>
+                             <th>Class Number</th>
+                             <th>Subject Code</th>
+							<th>Course Name</th>
 							<th>Name</th>
 							<th>Credits</th>
 							<th>Grade</th>
@@ -70,7 +71,9 @@
 					<tbody>
 						<c:forEach var="t" items="${TheStudentTranscript}">
 							<tr>
-								<td>${t.hclass.hcourse.subjectcode}</td>
+							   <td>${t.hclass.classnum}</td>
+							   <td>${t.hclass.hcourse.subjectcode}</td>
+								<td>${t.hclass.hcourse.coursename}</td>
 								<td>${t.hstudent.studentname}</td>
 								<td>${t.hclass.hcourse.credits}</td>
 								<td>${t.grade}</td>

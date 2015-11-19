@@ -25,7 +25,7 @@ public class Hclass implements Serializable {
 
 	private String crn;
 
-	private BigDecimal enrollmenthold;
+	private int enrollmenthold;
 
 	//bi-directional many-to-one association to Hclassroom
 	@ManyToOne
@@ -75,11 +75,11 @@ public class Hclass implements Serializable {
 		this.crn = crn;
 	}
 
-	public BigDecimal getEnrollmenthold() {
+	public int getEnrollmenthold() {
 		return this.enrollmenthold;
 	}
 
-	public void setEnrollmenthold(BigDecimal enrollmenthold) {
+	public void setEnrollmenthold(int enrollmenthold) {
 		this.enrollmenthold = enrollmenthold;
 	}
 

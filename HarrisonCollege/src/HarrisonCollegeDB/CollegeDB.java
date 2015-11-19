@@ -670,6 +670,46 @@ public class CollegeDB {
 	        return isSuccess;
 	}
 
+	//add new class
+	public boolean addNewClass(String crn, int courseCode, int intrutorId, int roomId, int scheduleId, int semesterCode, int enrollHold){
+	        Hcourse course = getCoursesById(courseCode);
+	        Hinstructor instructor = getInstructorById(intrutorId);
+	        Hclassroom room = getClassroomById(roomId);
+	        Hschedule schedule = getScheduleById(scheduleId);
+	        Hsemester semester = getSemesterById(semesterCode);
+	        
+	        Hclass cls = new Hclass();
+	        cls.setCrn(crn);
+	        cls.setHcourse(course);
+	        cls.setHinstructor(instructor);
+	        cls.setHclassroom(room);
+	        cls.setHschedule(schedule);
+	        cls.setHsemester(semester);
+	        cls.setEnrollmenthold(enrollHold);
+	        
+	        //add to database
+	        boolean isSuccess = false;
+	        
+	        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+	        EntityTransaction trans = em.getTransaction();
+	        
+	        trans.begin();
+	        
+	        try{
+	            em.persist(cls);
+	            trans.commit();
+	            isSuccess = true;
+	        }catch(Exception e){
+	            System.out.println(e);
+	            trans.rollback();
+	        }finally{
+	            em.close();
+	        }
+	        
+	        return isSuccess;
+	                                 
+	}
+
 	
 	//******************************************
 	//(Un)Enrollment Related********************

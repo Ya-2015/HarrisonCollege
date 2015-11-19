@@ -21,7 +21,7 @@ public class Hclassroom implements Serializable {
 	@Id
 	@SequenceGenerator(schema="testuserdb",name="HCLASSROOM_ROOMID_GENERATOR",sequenceName="HCLASSROOM_SEQ1",allocationSize=1 )
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HCLASSROOM_ROOMID_GENERATOR")
-	private long roomid;
+	private int roomid;
 
 	private String bldgname;
 
@@ -38,11 +38,11 @@ public class Hclassroom implements Serializable {
 	public Hclassroom() {
 	}
 
-	public long getRoomid() {
+	public int getRoomid() {
 		return this.roomid;
 	}
 
-	public void setRoomid(long roomid) {
+	public void setRoomid(int roomid) {
 		this.roomid = roomid;
 	}
 

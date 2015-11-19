@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import model.Hclass;
+import model.Hclassroom;
 import model.Hcourse;
 import model.Hdepartment;
 import model.Henrollment;
@@ -276,6 +277,11 @@ public class tryMain {
 		System.out.println("\n get instructor by id");
 		Hinstructor inss = uDB.getInstructorById(3);
 		System.out.println(inss.getInstructorname());
+		
+		//get class room by id
+		System.out.println("\n get classroom by id");
+		Hclassroom room = uDB.getClassroomById(3);
+		System.out.println(room.getRoomid() + " "+room.getBldgname() + " "+room.getRoomnumber());
 	}
 
 }

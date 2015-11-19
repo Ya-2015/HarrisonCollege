@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import model.Hclass;
+import model.Hclassroom;
 import model.Hcourse;
 import model.Hdepartment;
 import model.Henrollment;
@@ -324,6 +325,30 @@ public class CollegeDB {
 		}
 		
 		return fd;
+	}
+	
+	//******************************************
+	//Room Related**************************
+	//******************************************
+	// get room by id
+	public Hclassroom getClassroomById(int roomid) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        Hclassroom fd = null;
+        
+        try {
+            String sql = "select s from Hclassroom s where s.roomid = ?1";
+            TypedQuery<Hclassroom> q = em.createQuery(sql, Hclassroom.class);
+            q.setParameter(1, roomid);
+            
+            fd = q.getSingleResult();
+            
+        } catch (Exception e){
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+        
+        return fd;
 	}
 	
 	//******************************************

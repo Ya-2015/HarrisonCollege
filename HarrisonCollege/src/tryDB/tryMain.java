@@ -287,6 +287,10 @@ public class tryMain {
 		System.out.println("\n get schedule by id");
 		Hschedule sh = uDB.getScheduleById(3);
 		System.out.println(sh.getSchedulecode() + sh.getDow1() + sh.getDow2() + sh.getHour12()+sh.getMinutes60());
+		
+		//remove class
+		System.out.println("\n remove class");
+		boolean removal = uDB.removeClass(21);
 	}
 
 }

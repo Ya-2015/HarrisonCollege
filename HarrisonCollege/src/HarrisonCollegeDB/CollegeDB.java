@@ -645,7 +645,32 @@ public class CollegeDB {
 		return new ArrayList<Hclass>(fd);
 	}
 	
+	//remove class
+	public boolean removeClass(int classNum){
+	        Hclass cls = getClassById(classNum);
+	        
+	        boolean isSuccess = false;
 
+	        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+	        EntityTransaction trans = em.getTransaction();
+
+	        trans.begin();
+	        
+	        try{
+	            em.remove(em.merge(cls));
+	            trans.commit();
+	            isSuccess = true;
+	        }catch(Exception e){
+	            System.out.println(e);
+	            trans.rollback();
+	        }finally{
+	            em.close();
+	        }
+	        
+	        return isSuccess;
+	}
+
+	
 	//******************************************
 	//(Un)Enrollment Related********************
 	//******************************************

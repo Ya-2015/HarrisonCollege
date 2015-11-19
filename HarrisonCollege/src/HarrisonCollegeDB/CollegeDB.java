@@ -721,6 +721,26 @@ public class CollegeDB {
         }
         
         return isSuccess;
+	}
+	
+	public ArrayList<Henrollment> viewGradeSheetByClass(int classNum){
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        List<Henrollment> fd = null;
+        
+        try {
+            String sql = "select e from Henrollment e where e.hclass.classnum = ?1";
+            TypedQuery<Henrollment> q = em.createQuery(sql, Henrollment.class);
+            q.setParameter(1, classNum);
+            
+            fd = q.getResultList();
+            
+        } catch (Exception e){
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+        
+        return new ArrayList<Henrollment>(fd);
 }
 	
 	//******************************************

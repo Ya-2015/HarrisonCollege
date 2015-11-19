@@ -264,6 +264,13 @@ public class tryMain {
 		for(Hsemester s2 : allSem){
 			System.out.println(s2.getSemestercode() + " " +s2.getHyear() + " "+s2.getSemester());
 		}
+		
+		//view grade sheet by class num
+		System.out.println("\n view grade sheet by class num");
+		ArrayList<Henrollment> allgrades = uDB.viewGradeSheetByClass(1);
+		for (Henrollment e : allgrades){
+			System.out.println(e.getGrade() + " "+e.getHclass().getClassnum() + " "+e.getHstudent().getStudentname());
+		}
 	}
 
 }

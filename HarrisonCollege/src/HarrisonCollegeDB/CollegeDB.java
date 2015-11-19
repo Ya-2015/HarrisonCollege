@@ -15,6 +15,7 @@ import model.Henrollment;
 import model.Hinstructor;
 import model.Hmajor;
 import model.Hschedule;
+import model.Hsemester;
 import model.Hstudent;
 import model.Huser;
 import DBUtil.DBUtil;
@@ -884,6 +885,48 @@ public class CollegeDB {
 	}
 	
 
+	//******************************************
+	//Semester Related**************************
+	//******************************************
+	public Hsemester getSemesterById(int semesterId){
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        Hsemester fd = null;
+        
+        try {
+            String sql = "select s from Hsemester s where s.semestercode = ?1";
+            TypedQuery<Hsemester> q = em.createQuery(sql, Hsemester.class);
+            q.setParameter(1, semesterId);
+            
+            fd = q.getSingleResult();
+            
+        } catch (Exception e){
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+        
+        return fd;     
+	}
 	
+	public Hsemester getCurrentSemester(int year, String term){
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        Hsemester fd = null;
+        
+        try {
+            String sql = "select s from Hsemester s where s.hyear = ?1 and s.semester = ?2";
+            TypedQuery<Hsemester> q = em.createQuery(sql, Hsemester.class);
+            q.setParameter(1, year);
+            q.setParameter(2, term);
+            
+            fd = q.getSingleResult();
+            
+        } catch (Exception e){
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+        
+        return fd;     
+}
 
 }

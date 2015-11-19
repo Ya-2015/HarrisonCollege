@@ -10,6 +10,7 @@ import model.Henrollment;
 import model.Hinstructor;
 import model.Hmajor;
 import model.Hschedule;
+import model.Hsemester;
 import model.Hstudent;
 import model.Huser;
 import HarrisonCollegeDB.CollegeDB;
@@ -247,6 +248,15 @@ public class tryMain {
 		}else{
 			System.out.println("failed");
 		}
+		
+		//get semester by semester code
+		System.out.println("\nget semester by semester code");
+		Hsemester sem = uDB.getSemesterById(2);
+		System.out.println(sem.getSemestercode() + " " +sem.getHyear() + " "+sem.getSemester());
+		
+		//get current semester code
+		Hsemester sem2 = uDB.getCurrentSemester(2014, "fall");
+		System.out.println(sem2.getSemestercode() + " " +sem2.getHyear() + " "+sem2.getSemester());
 	}
 
 }

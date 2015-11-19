@@ -23,7 +23,7 @@ public class Hsemester implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HSEMESTER_SEMESTERCODE_GENERATOR")
 	private int semestercode;
 
-	private BigDecimal hyear;
+	private int hyear;
 
 	private String semester;
 
@@ -42,11 +42,11 @@ public class Hsemester implements Serializable {
 		this.semestercode = semestercode;
 	}
 
-	public BigDecimal getHyear() {
+	public int getHyear() {
 		return this.hyear;
 	}
 
-	public void setHyear(BigDecimal hyear) {
+	public void setHyear(int hyear) {
 		this.hyear = hyear;
 	}
 

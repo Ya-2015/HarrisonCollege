@@ -693,6 +693,35 @@ public class CollegeDB {
 		return new ArrayList<Henrollment>(fd);
 	}
 	
+	public boolean assignGrade(int classNum, int stuNum, String grade){
+        boolean isSuccess = false;
+        
+        Henrollment enroll = getEnrollmentByStudentByClass(classNum, stuNum);
+        if(enroll==null){
+            return false;
+        }else{
+            enroll.setGrade(grade);
+        }
+        
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        
+        trans.begin();
+        
+        try{
+            em.merge(enroll);
+            trans.commit();
+            isSuccess = true;
+        }catch(Exception e){
+            System.out.println(e);
+            trans.rollback();
+        }finally{
+            em.close();
+        }
+        
+        return isSuccess;
+}
+	
 	//******************************************
 	//Major Related*****************************
 	//******************************************

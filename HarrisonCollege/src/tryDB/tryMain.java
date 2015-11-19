@@ -238,6 +238,15 @@ public class tryMain {
 		for (Hstudent s : stu1){
 			System.out.println(s.getStudentname());
 		}
+		
+		//assign grade to student of a class
+		System.out.println("\nassign grade to student of a class");
+		boolean assignFlag = uDB.assignGrade(1, 2, "C");
+		if(assignFlag){
+			System.out.println("success");
+		}else{
+			System.out.println("failed");
+		}
 	}
 
 }

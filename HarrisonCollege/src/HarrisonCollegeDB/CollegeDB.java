@@ -285,6 +285,27 @@ public class CollegeDB {
 		return new ArrayList<Hinstructor>(fd);
 	}
 	
+	//get instructor by id
+	public Hinstructor getInstructorById(int intructorNum) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        Hinstructor fd = null;
+        
+        try {
+            String sql = "select s from Hinstructor s where s.instructornum = ?1";
+            TypedQuery<Hinstructor> q = em.createQuery(sql, Hinstructor.class);
+            q.setParameter(1, intructorNum);
+            
+            fd = q.getSingleResult();
+            
+        } catch (Exception e){
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+        
+        return fd;
+	}
+	
 	public Hinstructor getInstructorProfileByNetId(String netid) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		Hinstructor fd = null;

@@ -271,6 +271,11 @@ public class tryMain {
 		for (Henrollment e : allgrades){
 			System.out.println(e.getGrade() + " "+e.getHclass().getClassnum() + " "+e.getHstudent().getStudentname());
 		}
+		
+		//get instructor by id
+		System.out.println("\n get instructor by id");
+		Hinstructor inss = uDB.getInstructorById(3);
+		System.out.println(inss.getInstructorname());
 	}
 
 }

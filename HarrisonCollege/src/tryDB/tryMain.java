@@ -282,6 +282,11 @@ public class tryMain {
 		System.out.println("\n get classroom by id");
 		Hclassroom room = uDB.getClassroomById(3);
 		System.out.println(room.getRoomid() + " "+room.getBldgname() + " "+room.getRoomnumber());
+		
+		//get class room by id
+		System.out.println("\n get schedule by id");
+		Hschedule sh = uDB.getScheduleById(3);
+		System.out.println(sh.getSchedulecode() + sh.getDow1() + sh.getDow2() + sh.getHour12()+sh.getMinutes60());
 	}
 
 }

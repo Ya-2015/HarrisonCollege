@@ -373,6 +373,27 @@ public class CollegeDB {
 		return new ArrayList<Hschedule>(fd);
 	}
 	
+	//get schedule by id
+	public Hschedule getScheduleById(int scheduleId){
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        Hschedule fd = null;
+        
+        try {
+            String sql = "select s from Hschedule s where s.schedulecode = ?1";
+            TypedQuery<Hschedule> q = em.createQuery(sql, Hschedule.class);
+            q.setParameter(1, scheduleId);
+            
+            fd = q.getSingleResult();
+            
+        } catch (Exception e){
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+        
+        return fd;
+	}
+	
 	//******************************************
 	//Student Related**************************
 	//******************************************
